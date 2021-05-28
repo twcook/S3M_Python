@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://www.s3model.com/ns/s3m/s3model#"
+     xml:base="https://www.s3model.com/ns/s3m/s3model"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+     xmlns:s3m="https://www.s3model.com/ns/s3m/">
+    <owl:Ontology rdf:about="https://www.s3model.com/ns/s3m/s3model"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/description -->
+
+    <owl:AnnotationProperty rdf:about="https://www.s3model.com/ns/s3m/description"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#duration -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gDay -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gDay"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gMonth -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gMonth"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gMonthDay -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gMonthDay"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYearMonth -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYearMonth"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model#constrainsCMC -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model#constrainsCMC"/>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model#isRMSOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model#isRMSOf"/>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model#partOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model#partOf">
+        <s3m:description>This property relates the parts of the S3Model system to the abstract concept of S3Model.</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/constrainsRM -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model/constrainsRM">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.s3model.com/ns/s3m/s3model/DM"/>
+        <rdfs:range rdf:resource="https://www.s3model.com/ns/s3m/s3model/RM"/>
+        <s3m:description xml:lang="en-us">Relates a Data Model to one Reference Model.</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/containsCMC -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model/containsCMC">
+        <rdfs:domain rdf:resource="https://www.s3model.com/ns/s3m/s3model/RM"/>
+        <rdfs:range rdf:resource="https://www.s3model.com/ns/s3m/s3model/CMC"/>
+        <s3m:description xml:lang="en-us">Defines the relation that a Reference Model contains a specific Core Model Component.</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/containsRMC -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model/containsRMC">
+        <rdfs:domain rdf:resource="https://www.s3model.com/ns/s3m/s3model/DM"/>
+        <rdfs:range rdf:resource="https://www.s3model.com/ns/s3m/s3model/RMC"/>
+        <s3m:description xml:lang="en-us">Defines the relation that a Data Model contains a specific Reuseable Model Component.</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/hasException -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model/hasException">
+        <rdfs:domain rdf:resource="https://www.s3model.com/ns/s3m/s3model/DataInstanceInvalid"/>
+        <rdfs:range rdf:resource="https://www.s3model.com/ns/s3m/s3model/Exception"/>
+        <s3m:description xml:lang="en">Relates an Exception subclass to an invalid data instance.</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/isCMSOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model/isCMSOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.s3model.com/ns/s3m/s3model/CMS"/>
+        <rdfs:range rdf:resource="https://www.s3model.com/ns/s3m/s3model/CMC"/>
+        <s3m:description xml:lang="en-us">Relates a symbol (CMS) to a core model component (CMC).</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/isInstanceOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model/isInstanceOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.s3model.com/ns/s3m/s3model/DataInstance"/>
+        <rdfs:range rdf:resource="https://www.s3model.com/ns/s3m/s3model/DM"/>
+        <s3m:description xml:lang="en-us">Relates a DataInstance to a Data Model (DM).</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/isRMSOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.s3model.com/ns/s3m/s3model/isRMSOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.s3model.com/ns/s3m/s3model/RMS"/>
+        <rdfs:range rdf:resource="https://www.s3model.com/ns/s3m/s3model/RMC"/>
+        <s3m:description xml:lang="en-us">Relates a symbol (RMS) to a reuseable model component (RMC).</s3m:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/CMC -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/CMC">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model#partOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/RM"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en-us">Core Model Component 
+A component model contained in a reference model. A CMC represents a specific core type of component that further contains elements with base datatypes and other CMCs to define its structure.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/CMS -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/CMS">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model/isCMSOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/CMC"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en-us">Core Model Symbol
+A CMS represents a CMC in instance data. In practice, it is usually substituted for by a Replaceable Model Symbol (RMS). This substitution is because constraints are expressed in a Replaceable Model Component (RMC) which is then represented by an RMS.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/DM -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/DM">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model/constrainsRM"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/RM"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en-us">Data Model
+ A set of selected RMCs that are constraints on the RM components (CMCs) to represent a domain concept. In the implementation language, there may be additional syntactic conventions required. Caution: Not to be confused with Data Instance.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/DataInstance -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/DataInstance">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model/isInstanceOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/DM"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en-us">A set of data items that report via the isInstanceOf property that it conforms to a DM. In this state, it has not been tested for validation.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/DataInstanceError -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/DataInstanceError">
+        <rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model/DataInstance"/>
+        <s3m:description xml:lang="en-us">Subclass of DataInstance. A set of data items that DOES NOT conform to the DM it represents, OR it contains invalid data and does not contain one or more children of an Exception. If there are no noted Exceptions in the Data Instance, then it should be considered suspect and discarded.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/DataInstanceInvalid -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/DataInstanceInvalid">
+        <rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model/DataInstance"/>
+        <s3m:description xml:lang="en-us">Subclass of DataInstance. A set of data items that conforms to a DM to represent an instance of that concept AND at least some of the data values are NOT valid according to the DM constraints. An Invalid Data Instance must contain one or more children of an Exception.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/DataInstanceValid -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/DataInstanceValid">
+        <rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model/DataInstance"/>
+        <s3m:description xml:lang="en-us">Subclass of DataInstance. A set of data items that conforms to a DM to represent an instance of that concept AND the all of the data values are valid according to the DM constraints.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/Exception -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/Exception">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model#partOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/DataInstanceInvalid"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en">Exceptions indicate that a data instance may be invalid when validated against its model. However, the exceptional value may be explainable and provide valuable contextual information. A specific Exception subclass instance included in the data instance will provide that additional information.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/RM -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/RM">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model#partOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/S3Model"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en-us">Reference Model
+
+A set of components called Core Concept Models (CMCs) that provide structural integrity for a domain concept. Some CMCs are mandatory in DMs, and some are optional. Optionality is defined in each versioned, RM implementation.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/RMC -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/RMC">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model#constrainsCMC"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/CMC"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en-us">Reusable Model Component 
+            
+The name RMC is given to a CMC that has been constrained for use in a DM. Through the constraints, an RMC defines a single concept based on syntactic data constraints as well as specified semantics. It is reusable because it can be reused in multiple DMs.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/RMS -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/RMS">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.s3model.com/ns/s3m/s3model#isRMSOf"/>
+                <owl:someValuesFrom rdf:resource="https://www.s3model.com/ns/s3m/s3model/RMC"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <s3m:description xml:lang="en-us">Reusable Model Symbol 
+
+The RMS represents an RMC in instance data. Can be considered as a data container for the components of an RMC. All of the RMSs are contained in a DataInstance when in transit.</s3m:description>
+    </owl:Class>
+    
+
+
+    <!-- https://www.s3model.com/ns/s3m/s3model/S3Model -->
+
+    <owl:Class rdf:about="https://www.s3model.com/ns/s3m/s3model/S3Model">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <s3m:description xml:lang="en-us">The root concept. The is the source of the abstract concept of S3Model. All of the S3Model classes are related to this class through partOf.</s3m:description>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

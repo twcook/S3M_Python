@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en-US" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Project Integration &mdash; Shareable, Structured, Semantic Model</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Introduction and Installation" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> S3MPython
+          
+
+          
+            
+            <img src="_static/SmallLogo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction and Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LIS.html">Python Language Implementation Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">S3MPython</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Project Integration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="project-integration">
+<h1>Project Integration<a class="headerlink" href="#project-integration" title="Permalink to this headline">¶</a></h1>
+<p>After installing S3MPython into your project, it must be initialized and configured.</p>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>Initialization is required to place required files into your project.</p>
+<p>Follow these steps in a terminal in your <strong>project root directory</strong>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3
+</pre></div>
+</div>
+<p>You will now be inside a Python3 interpreter configured as your virtual environment (S3MPy).
+<em>NOTE:</em> Your terminal will now show the Python interpreter prompt which is <strong>&gt;&gt;&gt;</strong></p>
+<p>Execute each of the lines below, in sequence.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">S3MPython</span> <span class="k">import</span> <span class="n">project</span>
+<span class="n">project</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>After this is complete you should perform the additional configuration steps below.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>S3MPython has a significant number of configuration options, all with reasonable defaults.</p>
+<p>When the project is initialized a copy of <em>S3MPython.conf</em> is placed in the <em>conf</em> subdirectory of your project root.</p>
+<p>This is a copy of the <em>S3MPython.conf</em> file with comments. If you open the <em>conf/S3MPython.conf</em> file in your project, it will not have comments. Also the <strong>prjpath:</strong> variable should have the complete path to your project root as its value.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; S3MPython.conf is the configuration</span>
+<span class="k">[S3MPython]</span>
+<span class="c1">; the project path is written during project init.</span>
+<span class="na">prjpath:</span>
+
+<span class="c1">; enter the full path to where you want to store the exported data models</span>
+<span class="c1">; default will create a directory in the project root directory called &#39;dmlib&#39;</span>
+<span class="na">dmlib: default</span>
+
+<span class="c1">; enter the full path to where you want to store the XML catalog file</span>
+<span class="c1">; default will create a directory in the users home directory called &#39;S3MPython/catalogs/catalog.xml&#39;</span>
+<span class="na">catalog: default</span>
+
+<span class="c1">; enter the full path to an Access Control System file.</span>
+<span class="c1">; default will create a simple default file in the users home directory &#39;S3MPython/acs.txt&#39;</span>
+<span class="na">acsfile: default</span>
+
+<span class="c1">; enter the full path to where you want to store the generated XML</span>
+<span class="c1">; enter None if you configured a repository below.</span>
+<span class="na">xmldir: xmldir</span>
+
+<span class="c1">; enter the full path to where you want to store the generated RDF</span>
+<span class="c1">; enter None if you configured a repository below.</span>
+<span class="na">rdfdir: rdfdir</span>
+
+<span class="k">[NAMESPACES]</span>
+<span class="c1">; any additional namespaces must be defined here with their abbreviations.</span>
+<span class="c1">; {abbrev}:{namespace URI}</span>
+
+<span class="na">dul: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#</span>
+
+
+<span class="c1">; Below are where repository setups are defined for each of the three types of data generation.</span>
+<span class="c1">; If a type is to be generated but no repository is defined for the type. Then the data will be generated</span>
+<span class="c1">; and written to the filesystem in a subdirectory of the output directory.</span>
+
+
+<span class="c1">; A default repository where we can write the output XML instead of to the filesystem.</span>
+<span class="c1">; The config will only process the first one with an ACTIVE status.</span>
+
+<span class="k">[BASEX]</span>
+<span class="na">status: INACTIVE</span>
+<span class="na">host: localhost</span>
+<span class="na">port: 1984</span>
+<span class="na">dbname: S3MPython</span>
+<span class="na">user: admin</span>
+<span class="na">password: admin</span>
+
+<span class="c1">; A default repository where we can write the output RDF instead of to the filesystem.</span>
+<span class="c1">; The config will only process the first one with an ACTIVE status.</span>
+
+<span class="k">[ALLEGROGRAPH]</span>
+<span class="na">status: INACTIVE</span>
+<span class="na">host: localhost</span>
+<span class="na">port: 10035</span>
+<span class="na">repo: S3MPython</span>
+<span class="na">user: admin</span>
+<span class="na">password: admin</span>
+
+
+<span class="c1">; MarkLogic is a multi-model DB, select the types of data to load by entering &#39;True&#39; as the load*** value</span>
+<span class="c1">; the port number will be used to attach your REST API</span>
+<span class="c1">; the forests key is the number of forests to create, 1 to 99</span>
+<span class="c1">; the user MUST have the manage-admin role/priviliges</span>
+<span class="k">[MARKLOGIC]</span>
+<span class="na">status: INACTIVE</span>
+<span class="na">loadxml: True</span>
+<span class="na">loadrdf: True</span>
+<span class="na">loadjson: True</span>
+<span class="na">hostip: 192.168.25.120</span>
+<span class="na">hostname: localhost.localdomain</span>
+<span class="na">port: 8020</span>
+<span class="na">dbname: S3MPython</span>
+<span class="na">forests: 2</span>
+<span class="na">user: admin</span>
+<span class="na">password: admin</span>
+
+
+<span class="c1">; There are no user editable options in the SYSTEM section.</span>
+
+<span class="k">[SYSTEM]</span>
+<span class="na">version: 3.1.0.12</span>
+<span class="na">rmversion: 3.1.0</span>
+</pre></div>
+</div>
+<p>In the <strong>[SYSTEM]</strong> section at the bottom, do not edit anything.</p>
+<p>In the <strong>[S3MPython]</strong> section:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>be sure that the project path is correct</p></li>
+<li><p>for the <strong>dmlib</strong> value enter an existing pathname if you do not want the system to use the default</p></li>
+<li><p>for the <strong>catalog</strong> value enter an existing pathname if you do not want the system to use the default</p></li>
+<li><p>for the <strong>acsfile</strong> value enter an existing pathname and filename if you do not want the system to use the default</p></li>
+<li><p>for the <strong>xmldir</strong> and <strong>rdfdir</strong> values enter an existing pathname if you do not want the system to use the default or enter <em>None</em> if you are using one of the repositories that we support.</p></li>
+</ul>
+</div></blockquote>
+<p>In the <strong>[NAMESPACES]</strong> section:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enter any project specific namespaces that you are using.</p></li>
+</ul>
+</div></blockquote>
+<p>In the <strong>[BASEX]</strong>, <strong>[ALLEGROGRAPH]</strong>, <strong>[MARKLOGIC]</strong>, sections:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>complete any required information in order to use the respective repository.</p></li>
+<li><p>be sure to change the <strong>status</strong> to <em>ACTIVE</em> for the one(s) you want to use.</p></li>
+</ul>
+</div></blockquote>
+<p>After you are satisfied with the configuration options follow these steps in a terminal in your <strong>project root directory</strong>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3
+</pre></div>
+</div>
+<p>You will now be inside a Python3 interpreter configured as your virtual environment (S3MPy).
+<em>NOTE:</em> Your terminal will now show the Python interpreter prompt which is <strong>&gt;&gt;&gt;</strong></p>
+<p>Execute each of the lines below, in sequence.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">S3MPython</span> <span class="k">import</span> <span class="n">project</span>
+<span class="n">project</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This completes your S3MPython configuration.</p>
+<p>You can use the library to create S3Model models.</p>
+<p>For hands on experience we recomend that you start with the <a class="reference external" href="http://datainsights.tech/S3MPython_examples/">S3MPython Examples</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction and Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2009 - 2019, Data Insights, Inc. https://datainsights.tech  
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
