@@ -16,7 +16,7 @@ Programmers, data engineers and data scientists can also benefit from this libra
 domain experts as long as they understand the domain ontologies and vocabularies to use for the semantic markup.
 
 
-**For hands on experience** we recommend that you start with the `S3MPython Examples <https://github.com/twcook/S3M_Python_examples>`_.
+**For hands on experience** we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_.
 
 
 
@@ -28,7 +28,7 @@ Installation
 
 You should install S3MPython into the virtual environment where you are developing your application.
 
-The latest version can be installed from PyPi:
+The latest version can be installed from the `Python Package Index (PyPi) <https://pypi.org/project/S3MPython/>`_.
 
 .. code-block:: sh
 
@@ -36,7 +36,7 @@ The latest version can be installed from PyPi:
 
 The *<path/to/release/file>* is found by going to the `Releases page <>`_ under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.
 
-See the **Project Integration** section of the `documentation <http://datainsights.tech/S3MPython/config.html>`_ for the next steps.
+See the **Project Integration** section of the `documentation <https://s3model.com/S3MPython/docs/config.html>`_ for the next steps.
 
 
 Development
@@ -99,7 +99,7 @@ Build and install your development branch into your S3MPython environment.
 
 These quick steps create a virtual environment in the subdirectory *S3MPython*.
 Once the environment is created, conda displays how to activate the environment.
-When activated then S3MPython is installed in the subdirectory along with the environment.
+When activated, S3MPython is installed in the subdirectory along with the environment.
 
 
 What are all the files for?

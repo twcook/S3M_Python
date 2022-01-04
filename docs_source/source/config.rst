@@ -32,7 +32,7 @@ Configuration
 
 S3MPython has a significant number of configuration options, all with reasonable defaults.
 
-When the project is initialized a copy of *S3MPython.conf* is placed in the *conf* subdirectory of your project root.
+When the project is initialized a copy of the file *S3MPython.conf* is placed in the *conf* subdirectory of your project root.
 
 This is a copy of the *S3MPython.conf* file with comments. If you open the *conf/S3MPython.conf* file in your project, it will not have comments. Also the **prjpath:** variable should have the complete path to your project root as its value.
 
@@ -128,6 +128,7 @@ This is a copy of the *S3MPython.conf* file with comments. If you open the *conf
 In the **[SYSTEM]** section at the bottom, do not edit anything.
 
 In the **[S3MPython]** section:
+*These are all optional to edit. A resonable default will be used if you leave them set to default.*
 
     - be sure that the project path is correct
     - for the **dmlib** value enter an existing pathname if you do not want the system to use the default
@@ -145,7 +146,7 @@ In the **[NAMESPACES]** section:
 In the **[BASEX]**, **[ALLEGROGRAPH]**, **[MARKLOGIC]**, sections:
 
     - complete any required information in order to use the respective repository.
-    - be sure to change the **status** to *ACTIVE* for the one(s) you want to use.
+    - be sure to change the **status** to *ACTIVE* for the one you want to use.
 
 
 After you are satisfied with the configuration options follow these steps in a terminal in your **project root directory**.
@@ -168,5 +169,5 @@ This completes your S3MPython configuration.
 
 You can use the library to create S3Model models.
 
-For hands on experience we recomend that you start with the `S3MPython Examples <http://datainsights.tech/S3MPython_examples/>`_.
+For hands on experience we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. This is a set of Jupyter notebooks that walk through each of the data model components. 
 

@@ -27,7 +27,7 @@ RMVERSION = config['SYSTEM']['rmversion']
 # -- Project information -----------------------------------------------------
 
 project = 'S3MPython'
-copyright = '2009 - 2019, Data Insights, Inc. https://datainsights.tech  '
+copyright = '2009 - 2022, Timothy W. Cook'
 author = 'Timothy W. Cook'
 
 # The short X.Y version
