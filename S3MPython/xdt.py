@@ -5,7 +5,7 @@ This implementation is not a strict model of the RM.
 It also contains functionality to manage constraints that are
 built into the XML Schema parsers.
 
-Copyright 2019, Data Insights, Inc.
+Copyright, 2009 - 2022, Timothy W. Cook
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -449,7 +449,10 @@ class XdAnyType(ABC):
         if self.adapter:
             xdstr += padding.rjust(indent) + '<xs:element name="ms-' + self.mcuid + '" substitutionGroup="s3m:XdAdapter-value" type="s3m:mc-' + self.mcuid + '"/>\n'
         else:
-            sg = str(type(self)).replace("<class 'S3MPython.xdt.", "")
+            # Get the class to use for the substitution element. Strip off the leading type information.
+            sg = type(self)
+            sg = str(sg)
+            sg = sg.replace("<class 'S3MPython.xdt.","")
             sg = sg.replace("'>", '')
             xdstr += padding.rjust(indent) + '<xs:element name="ms-' + self.mcuid + '" substitutionGroup="s3m:' + sg + '" type="s3m:mc-' + self.mcuid + '"/>\n'
 

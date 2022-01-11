@@ -105,3 +105,9 @@ venv.bak/
 
 # editors
 .vscode/
+S3MPython_code.code-workspace
+
+# WingIDE
+S3M_Python.wpr
+S3M_Python.wpu
+
