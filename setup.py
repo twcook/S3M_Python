@@ -14,11 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 from setuptools import setup
-from os import path
+from os import path, getcwd
 import configparser
 
 config = configparser.ConfigParser()
-config.read('S3MPython/S3MPython.conf')
+try:
+    config.read(prjpath+'/S3MPython.conf')
+except IOError:
+    print("\n\nThe config file S3MPython.conf is not in the project root.\n\n")
+    exit()
+
+
+    
 VERSION = config['SYSTEM']['version']
 RMVERSION = config['SYSTEM']['rmversion']
 here = path.abspath(path.dirname(__file__))
