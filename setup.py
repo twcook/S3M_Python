@@ -46,7 +46,7 @@ setup(
     package_data={'docs': ['docs/*']},
     data_files=[('S3MPython/s3model', ['S3MPython/s3model/s3model_3_1_0.xsl', 'S3MPython/s3model/s3model_3_1_0.xsd', 'S3MPython/s3model/s3model_3_1_0.rdf',
                              'S3MPython/s3model/s3model.owl', 'S3MPython/s3model/dm-description.xsl']),
-                ('S3MPython/conf', ['S3MPython/conf/S3MPython.conf', 'S3MPython/conf/acs.txt','S3MPython/conf/catalog.xml'])],
+                ('S3MPython', ['S3MPython/S3MPython.conf', 'S3MPython/acs.txt','S3MPython/catalog.xml'])],
     install_requires=[
         'requests>=2.20',
         'lxml>=4.2',
