@@ -19,7 +19,7 @@ import os
 import configparser
 
 config = configparser.ConfigParser()
-config.read('conf/S3MPython.conf')
+config.read('S3MPython.conf')
 
 VERSION = config['SYSTEM']['version']
 RMVERSION = config['SYSTEM']['rmversion']
@@ -34,6 +34,7 @@ ACSFILE = config['S3MPython']['acsfile']
 
 def get_acs(acsfile):
     ACS = []
+    
     with open(acsfile, 'r') as f:
         for line in f:
             ACS.append(line.strip())
