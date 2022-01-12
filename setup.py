@@ -18,7 +18,7 @@ from os import path
 import configparser
 
 config = configparser.ConfigParser()
-config.read('S3MPython/conf/S3MPython.conf')
+config.read('S3MPython/S3MPython.conf')
 VERSION = config['SYSTEM']['version']
 RMVERSION = config['SYSTEM']['rmversion']
 here = path.abspath(path.dirname(__file__))
