@@ -111,7 +111,7 @@ domain experts as long as they understand the domain ontologies and vocabularies
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install S3MPython
 </pre></div>
 </div>
-<p>The latest release candidate can be installed from the <a class="reference external" href="https://pypi.org/project/S3MPython/">Python Package Index (PyPi)</a>.</p>
+<p>The latest release candidate can be installed from the <a class="reference external" href="https://github.com/twcook/S3M_Python/">Github</a> project.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install  &lt;path/to/release/file&gt;
 </pre></div>
 </div>
@@ -129,7 +129,10 @@ domain experts as long as they understand the domain ontologies and vocabularies
 <li><p>Open a terminal window and create a conda environment. On Windows it is best to open an <em>Anaconda Prompt</em> terminal from the Anaconda menu:</p></li>
 <li><p>Create and change to the directory</p></li>
 </ul>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> S3MPython
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir S3MPythonTest
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> S3MPythonTest
 </pre></div>
 </div>
 <ul class="simple">
@@ -138,12 +141,12 @@ domain experts as long as they understand the domain ontologies and vocabularies
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda env create -f S3MPython.yml
 </pre></div>
 </div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate &lt;path/to/directory&gt;
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate S3MPython
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>install S3MPython</p></li>
-</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install S3MPython
+</pre></div>
+</div>
 <p>Create a new branch for your changes.</p>
 <p>Build and install your development branch into your S3MPython environment.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 setup.py sdist bdist_wheel

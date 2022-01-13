@@ -33,7 +33,7 @@ You should install S3MPython into the *virtual environment* where you are develo
 
 
 
-The latest release candidate can be installed from the `Python Package Index (PyPi) <https://pypi.org/project/S3MPython/>`_.
+The latest release candidate can be installed from the `Github <https://github.com/twcook/S3M_Python/>`_ project.
 
 .. code-block:: sh
 
@@ -62,7 +62,12 @@ Anaconda is the **preferred environment** for a tool like S3MPython because it i
 
 .. code-block:: sh
 
-    cd S3MPython
+    mkdir S3MPythonTest
+
+
+.. code-block:: sh
+
+    cd S3MPythonTest
 
 - Create the environment
 
@@ -73,9 +78,11 @@ Anaconda is the **preferred environment** for a tool like S3MPython because it i
 
 .. code-block:: sh
 
-    source activate <path/to/directory>
+    source activate S3MPython
 
-- install S3MPython
+.. code-block:: sh
+
+    pip install S3MPython
 
 Create a new branch for your changes.
 
