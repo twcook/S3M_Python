@@ -453,7 +453,7 @@ class XdAnyType(ABC):
             sg = type(self)
             sg = str(sg)
             sg = sg.replace("<class 'S3MPython.xdt.","")
-            sg = sg.replace("'>", '')
+            sg = sg.replace("'Type>", '')
             xdstr += padding.rjust(indent) + '<xs:element name="ms-' + self.mcuid + '" substitutionGroup="s3m:' + sg + '" type="s3m:mc-' + self.mcuid + '"/>\n'
 
         xdstr += padding.rjust(indent) + '<xs:complexType name="mc-' + self.mcuid + '">\n'

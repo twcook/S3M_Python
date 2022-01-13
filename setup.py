@@ -17,9 +17,13 @@ from setuptools import setup
 from os import path, getcwd
 import configparser
 
+prjpath = getcwd()
+print(prjpath+'/S3MPython/S3MPython.conf')
+
+
 config = configparser.ConfigParser()
 try:
-    config.read(prjpath+'/S3MPython.conf')
+    config.read(prjpath+'/S3MPython/S3MPython.conf')
 except IOError:
     print("\n\nThe config file S3MPython.conf is not in the project root.\n\n")
     exit()
