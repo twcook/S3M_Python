@@ -1,12 +1,15 @@
+.. _init:
+
+===================
 Project Integration
 ===================
 
 After installing S3MPython into your project, it must be initialized and configured.
 
 Initialization
---------------
+==============
 
-Initialization is required to place required files into your project.
+Initialization is required to place necessary files into your project.
 
 Follow these steps in a terminal in your **project root directory**.
 
@@ -14,8 +17,11 @@ Follow these steps in a terminal in your **project root directory**.
 
     python3
 
-You will now be inside a Python3 interpreter configured as your virtual environment (S3MPy).
-*NOTE:* Your terminal will now show the Python interpreter prompt which is **>>>**
+You will now be inside a Python3 interpreter configured as your virtual environment.
+
+.. _note:
+     
+     Your terminal will now show the Python interpreter prompt which is **>>>**
 
 Execute each of the lines below, in sequence.
 
@@ -28,13 +34,13 @@ Execute each of the lines below, in sequence.
 After this is complete you should perform the additional configuration steps below.
 
 Configuration
--------------
+=============
 
 S3MPython has a significant number of configuration options, all with reasonable defaults.
 
-When the project is initialized a copy of *S3MPython.conf* is placed in the *conf* subdirectory of your project root.
+When the project is initialized a copy of the file *S3MPython.conf* is placed in the directory of your project root.
 
-This is a copy of the *S3MPython.conf* file with comments. If you open the *conf/S3MPython.conf* file in your project, it will not have comments. Also the **prjpath:** variable should have the complete path to your project root as its value.
+This is a copy of the *S3MPython.conf*. If you open the *S3MPython.conf* file in your project, it will not have comments. Also the **prjpath:** variable should have the complete path to your project root as its value.
 
 
 
@@ -46,28 +52,33 @@ This is a copy of the *S3MPython.conf* file with comments. If you open the *conf
     prjpath:
 
     ; enter the full path to where you want to store the exported data models
-    ; default will create a directory in the project root directory called 'dmlib'
+    ; default will create a directory in the project root directory called 'DM_Library'
     dmlib: default
 
     ; enter the full path to where you want to store the XML catalog file
-    ; default will create a directory in the users home directory called 'S3MPython/catalogs/catalog.xml'
+    ; default will create a directory in the project directory called 'catalog.xml'
     catalog: default
 
     ; enter the full path to an Access Control System file.
-    ; default will create a simple default file in the users home directory 'S3MPython/acs.txt'
+    ; default will create a simple default file in the project directory 'acs.txt'
     acsfile: default
 
     ; enter the full path to where you want to store the generated XML
-    ; enter None if you configured a repository below.
-    xmldir: xmldir
+    ; enter None if you configured a repository below. The default is 'xmldir' in the project directory.
+    xmldir: default
 
     ; enter the full path to where you want to store the generated RDF
-    ; enter None if you configured a repository below.
-    rdfdir: rdfdir
+    ; enter None if you configured a repository below. The default is 'rdfdir' in the project directory.
+    rdfdir: default
+   
+    ; enter the full path to where you want to store the generated JSON
+    ; enter None if you configured a repository below. The default is 'jsondir' in the project directory.
+    jsondir: default
 
     [NAMESPACES]
     ; any additional namespaces must be defined here with their abbreviations.
     ; {abbrev}:{namespace URI}
+    ; *dul* is an example that will be used.
 
     dul: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#
 
@@ -100,7 +111,7 @@ This is a copy of the *S3MPython.conf* file with comments. If you open the *conf
     password: admin
 
 
-    ; MarkLogic is a multi-model DB, select the types of data to load by entering 'True' as the load*** value
+    ; MarkLogic is a multi-model database, select the types of data to load by entering 'True' as the load*** value
     ; the port number will be used to attach your REST API
     ; the forests key is the number of forests to create, 1 to 99
     ; the user MUST have the manage-admin role/priviliges
@@ -121,13 +132,14 @@ This is a copy of the *S3MPython.conf* file with comments. If you open the *conf
     ; There are no user editable options in the SYSTEM section.
 
     [SYSTEM]
-    version: 3.1.0.12
+    version: 3.1.0.20
     rmversion: 3.1.0
 
 
 In the **[SYSTEM]** section at the bottom, do not edit anything.
 
 In the **[S3MPython]** section:
+*These are all optional to edit. A resonable default will be used if you leave them set to default.*
 
     - be sure that the project path is correct
     - for the **dmlib** value enter an existing pathname if you do not want the system to use the default
@@ -145,7 +157,7 @@ In the **[NAMESPACES]** section:
 In the **[BASEX]**, **[ALLEGROGRAPH]**, **[MARKLOGIC]**, sections:
 
     - complete any required information in order to use the respective repository.
-    - be sure to change the **status** to *ACTIVE* for the one(s) you want to use.
+    - be sure to change the **status** to *ACTIVE* for the one you want to use.
 
 
 After you are satisfied with the configuration options follow these steps in a terminal in your **project root directory**.
@@ -168,5 +180,5 @@ This completes your S3MPython configuration.
 
 You can use the library to create S3Model models.
 
-For hands on experience we recomend that you start with the `S3MPython Examples <http://datainsights.tech/S3MPython_examples/>`_.
+For hands on experience we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. This is a set of Jupyter notebooks that walk through each of the data model components. 
 

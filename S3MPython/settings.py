@@ -47,6 +47,7 @@ DM_LIB = config['S3MPython']['dmlib']
 XML_CATALOG = config['S3MPython']['catalog']
 XMLDIR = config['S3MPython']['xmldir']
 RDFDIR = config['S3MPython']['rdfdir']
+JSONDIR = config['S3MPython']['jsondir']
 
 # Create directories if they do not exist
 if not os.path.exists(DM_LIB):
@@ -58,6 +59,8 @@ if not os.path.exists(XMLDIR):
 if not os.path.exists(RDFDIR):
     os.makedirs(RDFDIR)
 
+if not os.path.exists(JSONDIR):
+    os.makedirs(JSONDIR)
 
 catalog = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">

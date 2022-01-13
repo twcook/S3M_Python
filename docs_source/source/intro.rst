@@ -16,9 +16,7 @@ Programmers, data engineers and data scientists can also benefit from this libra
 domain experts as long as they understand the domain ontologies and vocabularies to use for the semantic markup.
 
 
-**For hands on experience** we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_.
-
-
+**For hands on experience** we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. The **tutorial** for these examples is located in the `S3Model User Guide <https://s3model.com/userguide/docs/index.html>`_ It is *highly* recommended that those new to S3Model read the User Guide in it's entirety before doing the tutorial.
 
 
 .. _install:
@@ -26,15 +24,22 @@ domain experts as long as they understand the domain ontologies and vocabularies
 Installation
 ============
 
-You should install S3MPython into the virtual environment where you are developing your application.
+You should install S3MPython into the *virtual environment* where you are developing your application.
 
-The latest version can be installed from the `Python Package Index (PyPi) <https://pypi.org/project/S3MPython/>`_.
+
+.. code-block:: sh
+
+    pip install S3MPython
+
+
+
+The latest release candidate can be installed from the `Python Package Index (PyPi) <https://pypi.org/project/S3MPython/>`_.
 
 .. code-block:: sh
 
     pip install  <path/to/release/file>
 
-The *<path/to/release/file>* is found by going to the `Releases page <>`_ under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.
+The *<path/to/release/file>* is found by going to the `Releases page <https://github.com/twcook/S3M_Python/releases>`_ under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.
 
 See the **Project Integration** section of the `documentation <https://s3model.com/S3MPython/docs/config.html>`_ for the next steps.
 
@@ -65,19 +70,6 @@ Anaconda is the **preferred environment** for a tool like S3MPython because it i
 
     conda env create -f S3MPython.yml
 
-
-.. _activate: Activate
-
-
-- Activate the environment according to the instructions shown by Anaconda in the terminal window.
-
-**Windows**
-
-.. code-block:: sh
-
-    activate <path/to/directory>
-
-**or Linux/MacOSX**
 
 .. code-block:: sh
 

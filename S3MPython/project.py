@@ -17,11 +17,18 @@ def init(prjpath=None):
 
 
     env_dir = sys.prefix  # get the location of the default files after installation of S3MPython
-    shutil.copytree(os.path.join(env_dir, 'S3MPython', 's3model'), os.path.join(prjpath, 's3model'))
-    shutil.copytree(os.path.join(env_dir, 'S3MPython', 'conf'), os.path.join(prjpath, 'conf'))
+    
+    print("\nVirtual Environment: ", env_dir,"\n")
+    
+    # copy the configuration file and s3model files into the project.
+    if not os.path.exists(os.path.join(prjpath, 's3model')):
+        shutil.copytree(os.path.join(env_dir, 'S3MPython', 's3model'), os.path.join(prjpath, 's3model'))
+    
+    if not os.path.exists(os.path.join(prjpath, 'S3MPython.conf')):
+        shutil.copyfile(os.path.join(env_dir, 'S3MPython','S3MPython.conf'), os.path.join(prjpath,'S3MPython.conf'))
 
-    conf_file = os.path.join(prjpath, 'conf', 'S3MPython.conf')
-    print("Setting project path in conf/S3MPython.conf")
+    conf_file = os.path.join(prjpath,'S3MPython.conf')
+    print("\nSetting project path ("+prjpath+") in S3MPython.conf\n")
     config = configparser.ConfigParser()
     config.read(conf_file)
     config.set("S3MPython", "prjpath", prjpath)
@@ -32,13 +39,13 @@ def init(prjpath=None):
 
     print("\n\n  S3MPython initialization is complete.\n\n")
 
-    exit()
+    print("Now you should configure S3MPython with project.configure()\n\n")
 
 def configure():
     """
     Configure the S3MPython project.
     """
-    conf_file = os.path.join(os.getcwd(), 'conf', 'S3MPython.conf')
+    conf_file = os.path.join(os.getcwd(), 'S3MPython.conf')
     config = configparser.ConfigParser()
     config.read(conf_file)
 
@@ -46,7 +53,7 @@ def configure():
     DM_LIB = config['S3MPython']['dmlib']
 
     if DM_LIB.lower() == 'default':
-        DM_LIB = os.path.join(PRJROOT, "dmlib")
+        DM_LIB = os.path.join(PRJROOT, "DM_Library")
 
     if not os.path.exists(DM_LIB):
         os.makedirs(DM_LIB)
@@ -55,35 +62,40 @@ def configure():
     print("\nConfigured the Data Model Library location: ", DM_LIB)
 
 
-    catdir = config['S3MPython']['catalog']
-    if catdir.lower() == 'default':
-        catdir = os.path.join(PRJROOT, 'catalogs')
+    catalogname = config['S3MPython']['catalog']
+    if catalogname.lower() == 'default':
+        catalogname = PRJROOT 
     else:
-        if not os.path.exists(catdir):
-            print("\n\nERROR: ", catdir, " does not exist.")
+        if not os.path.exists(catalogname):
+            print("\n\nERROR: ", catalogname, " does not exist.")
             exit()
 
-    if not os.path.exists(catdir):
-        os.makedirs(catdir)
-        with open(catdir + os.sep + 'catalog.xml', 'w') as f:
+    if not os.path.exists(catalogname):
+        os.makedirs(catalogname)
+            
+    if not os.path.exists(os.path.join(catalogname,'catalog.xml')):
+        with open(os.path.join(catalogname,'catalog.xml'), 'w') as f:
             f.write("<?xml version='1.0' encoding='UTF-8'?>\n")
             f.write("<!DOCTYPE catalog PUBLIC '-//OASIS//DTD XML Catalogs V1.1//EN' 'http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd'>\n")
             f.write("<catalog xmlns='urn:oasis:names:tc:entity:xmlns:xml:catalog'>\n")
-            f.write("  <!-- S3Model 3.1.0 RM Schema -->")
-            f.write("  <uri name='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd' uri='s3model_3_1_0.xsd'/>\n")
+            f.write("  <!-- S3Model 3.1.0 RM Schema -->\n")
+            f.write("  <uri name='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd' uri='" + PRJROOT + "/s3model/s3model_3_1_0.xsd'/>\n")
             f.write("\n")
             f.write("  <!-- S3Model DMs -->")
             f.write("  <rewriteSystem systemIdStartString='https://www.s3model.com/dmlib/' rewritePrefix='" + DM_LIB + "'/>\n")
             f.write("</catalog>\n")
             f.write("\n")
 
-    config.set('S3MPython', 'catalog', catdir)
-    print("\nConfigured the XML_CATALOG location: ", catdir)
+    config.set('S3MPython', 'catalog', catalogname)
+    print("\nConfigured the XML_CATALOG location: ", catalogname + os.sep + "catalog.xml")
 
 
     ACSFILE = config['S3MPython']['acsfile']
     if ACSFILE.lower() == 'default':
-        ACSFILE = os.path.join(PRJROOT, 'conf', 'acs.txt')
+        ACSFILE = os.path.join(PRJROOT, 'acs.txt')
+        with open(os.path.join(PRJROOT,'acs.txt'), 'w') as f:
+            f.write("Public\nPrivate\nSecret\nPII")
+        
         config.set('S3MPython', 'acsfile', ACSFILE)
     else:
         if not os.path.isfile(ACSFILE):
@@ -95,7 +107,7 @@ def configure():
 
 
     XMLDIR = config['S3MPython']['xmldir']
-    if XMLDIR.lower() == 'xmldir':
+    if XMLDIR.lower() == 'default':
         XMLDIR = os.path.join(PRJROOT, 'xmldir')
         os.makedirs(XMLDIR)
         config.set('S3MPython', 'xmldir', XMLDIR)
@@ -108,16 +120,28 @@ def configure():
     print("\nConfigured the XML files directory: ", XMLDIR)
 
     RDFDIR = config['S3MPython']['rdfdir']
-    if RDFDIR.lower() == 'rdfdir':
+    if RDFDIR.lower() == 'default':
         RDFDIR = os.path.join(PRJROOT, 'rdfdir')
         os.makedirs(RDFDIR)
         config.set('S3MPython', 'rdfdir', RDFDIR)
     else:
-        if not os.path.exists(catdir):
+        if not os.path.exists(RDFDIR):
             print("\n\nERROR: ", RDFDIR, " does not exist.")
             exit()
 
     print("\nConfigured the RDF files directory: ", RDFDIR)
+
+    JSONDIR = config['S3MPython']['jsondir']
+    if JSONDIR.lower() == 'default':
+        JSONDIR = os.path.join(PRJROOT, 'jsondir')
+        os.makedirs(JSONDIR)
+        config.set('S3MPython', 'jsondir', JSONDIR)
+    else:
+        if not os.path.exists(JSONDIR):
+            print("\n\nERROR: ", JSONDIR, " does not exist.")
+            exit()
+
+    print("\nConfigured the JSON files directory: ", JSONDIR)
 
 
 

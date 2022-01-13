@@ -21,7 +21,7 @@ import sphinx_rtd_theme
 import configparser
 
 config = configparser.ConfigParser()
-config.read('../../S3MPython/conf/S3MPython.conf')
+config.read('../../S3MPython/S3MPython.conf')
 VERSION = config['SYSTEM']['version']
 RMVERSION = config['SYSTEM']['rmversion']
 # -- Project information -----------------------------------------------------
