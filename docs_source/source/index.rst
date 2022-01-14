@@ -11,6 +11,7 @@ Welcome to S3MPython's documentation!
 
    intro
    config
+   utils
    tutorials
    LIS
    license

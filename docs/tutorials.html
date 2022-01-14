@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Python Language Implementation Specification" href="LIS.html" />
-    <link rel="prev" title="Project Integration" href="config.html" /> 
+    <link rel="prev" title="Utility Functions" href="utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,8 +46,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction and Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Project Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utility Functions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#additional-tutorials">Additional Tutorials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#remove-example-environment">Remove Example Environment</a></li>
 </ul>
 </li>
@@ -83,7 +85,7 @@
              
   <section id="tutorials">
 <h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
-<p>See the S3Model Introduction Tutorial in the <a class="reference external" href="https://s3model.com/userguide/docs/index.html">User Guide</a> page.</p>
+<p>See the <em>S3Model Introduction Tutorial</em> in the <a class="reference external" href="https://s3model.com/userguide/docs/index.html">User Guide</a> for an easy to follow and very informative introduction to S3Model.</p>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -98,7 +100,7 @@
 </div>
 </li>
 <li><p>Create a virtual environment. Here we are using <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a>.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">S3MPythonExamples</span> <span class="n">S3MPython</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">S3MPythonExamples</span> <span class="n">pip</span>
 </pre></div>
 </div>
 </li>
@@ -115,27 +117,13 @@
 <li><p>Now you must follow the instructions for <strong>Project Integration</strong>.</p></li>
 </ul>
 <p>See the <a class="reference internal" href="config.html#init"><span class="std std-ref">Initialization and Configuration documentation</span></a> for the next steps.</p>
+<section id="additional-tutorials">
+<h3>Additional Tutorials<a class="headerlink" href="#additional-tutorials" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>In your virtual environment there is a file name <em>S3MPython.conf</em> and a folder named <em>s3model</em>. If you followed the above instructions they are in; <em>~/anaconda3/envs/S3MPythonExamples/S3MPython</em>. Copy them to your project directory. In this example it is <em>S3MPythonExamples</em>.</p></li>
-</ul>
-<p>See the
-info.py
-——-</p>
-<ul>
-<li><p>The <strong>getInfo</strong> function calls the settings script in S3MPython, which is driven by <em>S3MPython.conf</em> and prints version numbers and paths to the terminal.</p></li>
-<li><p>Start a Python shell:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
-</pre></div>
-</div>
-</li>
-<li><p>At the “&gt;&gt;&gt;” python prompt enter this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">S3MPython.examples</span> <span class="kn">import</span> <span class="n">info</span>
-</pre></div>
-</div>
-</li>
-<li><p><strong>DataModel01.py</strong> creates a full data model like the one from the Introduction tutorial.</p></li>
+<li><p><strong>DataModel01.py</strong> creates a full data model like the one from the <a class="reference external" href="https://s3model.com/userguide/docs/Setup.html">Introduction tutorial</a>.</p></li>
 <li><p><strong>DataModel02.py</strong> creates a data model example for an <a class="reference external" href="https://internetofthingsagenda.techtarget.com/definition/IoT-device">IoT device</a>. Specifically a ??????</p></li>
 </ul>
+</section>
 <section id="remove-example-environment">
 <h3>Remove Example Environment<a class="headerlink" href="#remove-example-environment" title="Permalink to this headline">¶</a></h3>
 <p>Use these commands:</p>
@@ -151,7 +139,7 @@ info.py
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="config.html" class="btn btn-neutral float-left" title="Project Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.html" class="btn btn-neutral float-left" title="Utility Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="LIS.html" class="btn btn-neutral float-right" title="Python Language Implementation Specification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="next" title="Utility Functions" href="utils.html" />
     <link rel="prev" title="Introduction and Installation" href="intro.html" /> 
 </head>
 
@@ -50,6 +50,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utility Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LIS.html">Python Language Implementation Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -84,6 +85,7 @@
 <p>After installing S3MPython into your project, it must be initialized and configured.</p>
 <section id="initialization">
 <h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>After <a class="reference internal" href="intro.html#install"><span class="std std-ref">installing</span></a> S3MPython into your project virtual environment.</p>
 <p>Initialization is required to place necessary files into your project.</p>
 <p>Follow these steps in a terminal in your <strong>project root directory</strong>.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3
@@ -103,8 +105,8 @@
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>S3MPython has a significant number of configuration options, all with reasonable defaults.</p>
-<p>When the project is initialized a copy of the file <em>S3MPython.conf</em> is placed in the directory of your project root.</p>
-<p>This is a copy of the <em>S3MPython.conf</em>. If you open the <em>S3MPython.conf</em> file in your project, it will not have comments. Also the <strong>prjpath:</strong> variable should have the complete path to your project root as its value.</p>
+<p>When the project is initialized a copy of the file <em>S3MPython.conf</em> is placed in the directory of your project root as well as a directory named <em>s3model</em>. This directory contains the validation files and ontology for S3Model.</p>
+<p>Below is a copy of the <em>S3MPython.conf</em>. Using your favorite <strong>plain-text editor</strong>, you should open the <em>S3MPython.conf</em> file in your project, it will not have comments. Also the <strong>prjpath:</strong> variable should have the complete path to your project root as its value.</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; S3MPython.conf is the configuration</span>
 <span class="k">[S3MPython]</span>
 <span class="c1">; the project path is written during project init.</span>
@@ -135,12 +137,10 @@
 <span class="na">jsondir: default</span>
 
 <span class="k">[NAMESPACES]</span>
-<span class="c1">; any additional namespaces must be defined here with their abbreviations.</span>
-<span class="c1">; {abbrev}:{namespace URI}</span>
-<span class="c1">; *dul* is an example that will be used.</span>
+<span class="c1">; any additional namespaces must be defined here with their abbreviations. One per line.</span>
+<span class="c1">; abbrev = namespace URI</span>
 
-<span class="na">dul: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#</span>
-
+<span class="na">foaf: http://xmlns.com/foaf/0.1/</span>
 
 <span class="c1">; Below are where repository setups are defined for each of the three types of data generation.</span>
 <span class="c1">; If a type is to be generated but no repository is defined for the type. Then the data will be generated</span>
@@ -195,7 +195,7 @@
 <span class="na">rmversion: 3.1.0</span>
 </pre></div>
 </div>
-<p>In the <strong>[SYSTEM]</strong> section at the bottom, do not edit anything.</p>
+<p>In the <strong>[SYSTEM]</strong> section at the bottom, do not edit anything. These version numbers are important for proper operation of S3MPython.</p>
 <p>In the <strong>[S3MPython]</strong> section:
 <em>These are all optional to edit. A resonable default will be used if you leave them set to default.</em></p>
 <blockquote>
@@ -204,13 +204,14 @@
 <li><p>for the <strong>dmlib</strong> value enter an existing pathname if you do not want the system to use the default</p></li>
 <li><p>for the <strong>catalog</strong> value enter an existing pathname if you do not want the system to use the default</p></li>
 <li><p>for the <strong>acsfile</strong> value enter an existing pathname and filename if you do not want the system to use the default</p></li>
-<li><p>for the <strong>xmldir</strong> and <strong>rdfdir</strong> values enter an existing pathname if you do not want the system to use the default or enter <em>None</em> if you are using one of the repositories that we support.</p></li>
+<li><p>for the <strong>xmldir</strong>, <strong>jsondir</strong> and <strong>rdfdir</strong> values enter an existing pathname if you do not want the system to use the default. The <em>defaults</em> for these are subdirectories of your project.</p></li>
 </ul>
 </div></blockquote>
+<p>If you are using one of the repositories below it will override the filesystem storage option.</p>
 <p>In the <strong>[NAMESPACES]</strong> section:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Enter any project specific namespaces that you are using.</p></li>
+<li><p>Enter any project specific namespaces that you are using. There is one example namespace added. Use the format shown, one per line. The abbreviation <em>foaf</em> stands for <a class="reference external" href="http://xmlns.com/foaf/spec/">Friend of a Friend</a> is an example that will be used. If you aren’t using this one then delete the line.  See the <a class="reference external" href="https://s3model.com/userguide/docs/S3Model.html#the-solution">Solution</a> section in the User Guide for more information.</p></li>
 </ul>
 </div></blockquote>
 <p>In the <strong>[BASEX]</strong>, <strong>[ALLEGROGRAPH]</strong>, <strong>[MARKLOGIC]</strong>, sections:</p>
@@ -221,19 +222,25 @@
 </ul>
 </div></blockquote>
 <p>After you are satisfied with the configuration options follow these steps in a terminal in your <strong>project root directory</strong>.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">project</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>You will now be inside a Python3 interpreter configured as your virtual environment (S3MPy).
-<em>NOTE:</em> Your terminal will now show the Python interpreter prompt which is <strong>&gt;&gt;&gt;</strong></p>
-<p>Execute each of the lines below, in sequence.</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">S3MPython</span> <span class="kn">import</span> <span class="n">project</span>
-<span class="n">project</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
+<p><strong>IF</strong> you happened to have exited the Python interpreter in your terminal. You will need to restart it and run the configure function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>    <span class="o">&gt;&gt;&gt;</span><span class="n">python3</span>
+
+<span class="n">You</span> <span class="n">will</span> <span class="n">now</span> <span class="n">be</span> <span class="n">inside</span> <span class="n">a</span> <span class="n">Python3</span> <span class="n">interpreter</span> <span class="n">configured</span> <span class="k">as</span> <span class="n">your</span> <span class="n">virtual</span> <span class="n">environment</span><span class="o">.</span>
+<span class="o">*</span><span class="n">NOTE</span><span class="p">:</span><span class="o">*</span> <span class="n">Your</span> <span class="n">terminal</span> <span class="n">will</span> <span class="n">now</span> <span class="n">show</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">interpreter</span> <span class="n">prompt</span> <span class="n">which</span> <span class="ow">is</span> <span class="o">**&gt;&gt;&gt;**</span>
+
+<span class="n">Execute</span> <span class="n">each</span> <span class="n">of</span> <span class="n">the</span> <span class="n">lines</span> <span class="n">below</span><span class="p">,</span> <span class="ow">in</span> <span class="n">sequence</span><span class="o">.</span>
+
+<span class="o">|</span>    <span class="o">&gt;&gt;&gt;</span><span class="kn">from</span> <span class="nn">S3MPython</span> <span class="kn">import</span> <span class="n">project</span>
+<span class="o">|</span>    <span class="o">&gt;&gt;&gt;</span><span class="n">project</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This completes your S3MPython configuration.</p>
 <p>You can use the library to create S3Model models.</p>
-<p>For hands on experience we recommend that you start with the <a class="reference external" href="https://github.com/twcook/S3M_Python_Training_examples">S3MPython Training Examples</a>. This is a set of Jupyter notebooks that walk through each of the data model components.</p>
+<p>For hands on experience we recommend that you start with the <a class="reference external" href="https://github.com/twcook/S3M_Python_Training_examples">S3MPython Training Examples</a>. This is a set of Jupyter notebooks that walk through each of the data model components. The instructions for this tutorial is in the <a class="reference external" href="https://s3model.com/userguide/docs/index.html">User Guide</a>.</p>
+<p>Then move on to the tutorials in this guide.</p>
 </section>
 </section>
 
@@ -242,7 +249,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="intro.html" class="btn btn-neutral float-left" title="Introduction and Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="Utility Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

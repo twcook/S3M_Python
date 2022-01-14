@@ -9,6 +9,8 @@ After installing S3MPython into your project, it must be initialized and configu
 Initialization
 ==============
 
+After :ref:`installing <install>` S3MPython into your project virtual environment.
+
 Initialization is required to place necessary files into your project.
 
 Follow these steps in a terminal in your **project root directory**.
@@ -38,11 +40,9 @@ Configuration
 
 S3MPython has a significant number of configuration options, all with reasonable defaults.
 
-When the project is initialized a copy of the file *S3MPython.conf* is placed in the directory of your project root.
+When the project is initialized a copy of the file *S3MPython.conf* is placed in the directory of your project root as well as a directory named *s3model*. This directory contains the validation files and ontology for S3Model.
 
-This is a copy of the *S3MPython.conf*. If you open the *S3MPython.conf* file in your project, it will not have comments. Also the **prjpath:** variable should have the complete path to your project root as its value.
-
-
+Below is a copy of the *S3MPython.conf*. Using your favorite **plain-text editor**, you should open the *S3MPython.conf* file in your project, it will not have comments. Also the **prjpath:** variable should have the complete path to your project root as its value.
 
 .. code-block:: ini
 
@@ -76,12 +76,10 @@ This is a copy of the *S3MPython.conf*. If you open the *S3MPython.conf* file in
     jsondir: default
 
     [NAMESPACES]
-    ; any additional namespaces must be defined here with their abbreviations.
-    ; {abbrev}:{namespace URI}
-    ; *dul* is an example that will be used.
+    ; any additional namespaces must be defined here with their abbreviations. One per line.
+    ; abbrev = namespace URI 
 
-    dul: http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#
-
+    foaf: http://xmlns.com/foaf/0.1/
 
     ; Below are where repository setups are defined for each of the three types of data generation.
     ; If a type is to be generated but no repository is defined for the type. Then the data will be generated
@@ -136,22 +134,26 @@ This is a copy of the *S3MPython.conf*. If you open the *S3MPython.conf* file in
     rmversion: 3.1.0
 
 
-In the **[SYSTEM]** section at the bottom, do not edit anything.
+In the **[SYSTEM]** section at the bottom, do not edit anything. These version numbers are important for proper operation of S3MPython. 
 
 In the **[S3MPython]** section:
 *These are all optional to edit. A resonable default will be used if you leave them set to default.*
 
     - be sure that the project path is correct
-    - for the **dmlib** value enter an existing pathname if you do not want the system to use the default
-    - for the **catalog** value enter an existing pathname if you do not want the system to use the default
-    - for the **acsfile** value enter an existing pathname and filename if you do not want the system to use the default
-    - for the **xmldir** and **rdfdir** values enter an existing pathname if you do not want the system to use the default or enter *None* if you are using one of the repositories that we support.
 
+    - for the **dmlib** value enter an existing pathname if you do not want the system to use the default
+    
+    - for the **catalog** value enter an existing pathname if you do not want the system to use the default
+    
+    - for the **acsfile** value enter an existing pathname and filename if you do not want the system to use the default
+    
+    - for the **xmldir**, **jsondir** and **rdfdir** values enter an existing pathname if you do not want the system to use the default. The *defaults* for these are subdirectories of your project. 
+    
+If you are using one of the repositories below it will override the filesystem storage option.
 
 In the **[NAMESPACES]** section:
 
-    - Enter any project specific namespaces that you are using.
-
+    - Enter any project specific namespaces that you are using. There is one example namespace added. Use the format shown, one per line. The abbreviation *foaf* stands for `Friend of a Friend <http://xmlns.com/foaf/spec/>`_ is an example that will be used. If you aren't using this one then delete the line.  See the `Solution <https://s3model.com/userguide/docs/S3Model.html#the-solution>`_ section in the User Guide for more information.
 
 
 In the **[BASEX]**, **[ALLEGROGRAPH]**, **[MARKLOGIC]**, sections:
@@ -159,26 +161,30 @@ In the **[BASEX]**, **[ALLEGROGRAPH]**, **[MARKLOGIC]**, sections:
     - complete any required information in order to use the respective repository.
     - be sure to change the **status** to *ACTIVE* for the one you want to use.
 
-
 After you are satisfied with the configuration options follow these steps in a terminal in your **project root directory**.
-
-.. code-block:: sh
-
-    python3
-
-You will now be inside a Python3 interpreter configured as your virtual environment (S3MPy).
-*NOTE:* Your terminal will now show the Python interpreter prompt which is **>>>**
-
-Execute each of the lines below, in sequence.
 
 .. code-block:: py3
 
-    from S3MPython import project
     project.configure()
+
+
+**IF** you happened to have exited the Python interpreter in your terminal. You will need to restart it and run the configure function::
+
+    |    >>>python3
+
+    You will now be inside a Python3 interpreter configured as your virtual environment.
+    *NOTE:* Your terminal will now show the Python interpreter prompt which is **>>>**
+
+    Execute each of the lines below, in sequence.
+
+    |    >>>from S3MPython import project
+    |    >>>project.configure()
+
 
 This completes your S3MPython configuration.
 
 You can use the library to create S3Model models.
 
-For hands on experience we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. This is a set of Jupyter notebooks that walk through each of the data model components. 
+For hands on experience we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. This is a set of Jupyter notebooks that walk through each of the data model components. The instructions for this tutorial is in the `User Guide <https://s3model.com/userguide/docs/index.html>`_.
 
+Then move on to the tutorials in this guide.

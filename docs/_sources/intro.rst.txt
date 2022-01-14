@@ -9,11 +9,11 @@ Purpose
 
 Target Audience
 ---------------
-This library provides the ability for *domain experts* from any field, with some programming
+This library provides the ability for `domain experts <https://s3model.com/specifications/docs/glossary.html#domain-expert>`_ from any field, with some programming
 ability to build S3Model data models.
 
 Programmers, data engineers and data scientists can also benefit from this library in the same ways as
-domain experts as long as they understand the domain ontologies and vocabularies to use for the semantic markup.
+domain experts as long as they understand the `domain ontologies and vocabularies <https://s3model.com/specifications/docs/glossary.html#ontology>`_ to use for the semantic markup.
 
 
 **For hands on experience** we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. The **tutorial** for these examples is located in the `S3Model User Guide <https://s3model.com/userguide/docs/index.html>`_ It is *highly* recommended that those new to S3Model read the User Guide in it's entirety before doing the tutorial.
@@ -24,7 +24,7 @@ domain experts as long as they understand the domain ontologies and vocabularies
 Installation
 ============
 
-You should install S3MPython into the *virtual environment* where you are developing your application.
+You should install S3MPython into the `virtual environment <https://docs.python.org/3/tutorial/venv.html>`_ where you are developing your application.
 
 
 .. code-block:: sh
