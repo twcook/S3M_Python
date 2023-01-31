@@ -1,11 +1,11 @@
 """
-Defines the S3Model reference model in Python 3.7
-Version 3.1.0
+Defines the S3Model reference model in Python.
+RM Version 4.0.0
 This implementation is not a strict model of the RM.
 It also contains functionality to manage constraints that are
 built into the XML Schema parsers.
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright, 2009 - 2023, Timothy W. Cook
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -465,7 +465,7 @@ class XdAnyType(ABC):
 
         # add RDF
         xdstr += padding.rjust(indent + 6) + '<rdfs:Class rdf:about="mc-' + self.mcuid + '">\n'
-        xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#' + self._xdtype + '"/>\n'
+        xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd#' + self._xdtype + '"/>\n'
         xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model/RMC"/>\n'
         xdstr += padding.rjust(indent + 8) + '<rdfs:isDefinedBy rdf:resource="' + quote(self.definition_url.strip()) + '"/>\n'
         if len(self.pred_obj_list) > 0:  # are there additional predicate-object definitions?
@@ -1954,7 +1954,7 @@ class XdFileType(XdAnyType):
             self.hash_result = '8c11e544038c03a86d4da378199cf897'
             self.hash_function = 'MD5'
             self.alt_txt = 'Example file model'
-            self.uri = 'https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd'
+            self.uri = 'https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd'
 
         indent = 2
         padding = ('').rjust(indent)

@@ -1,5 +1,5 @@
 """
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright, 2009 - 2023, Timothy W. Cook
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -67,7 +67,7 @@ catalog = """<?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 
   <!-- S3Model 3.1.0 RM Schema -->
-  <uri name="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd" uri="(path to project root)/s3model/s3model_3_1_0.xsd"/>
+  <uri name="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd" uri="(path to project root)/s3model/s3model_4_0_0.xsd"/>
   
   <!-- S3Model DMs -->
   <rewriteSystem systemIdStartString="https://dmgen.s3model.com/dmlib/" rewritePrefix="(path to project root)/DM_Library/"/>

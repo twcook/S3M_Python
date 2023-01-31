@@ -1,7 +1,7 @@
 """
 Structural items.
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright, 2009 - 2023, Timothy W. Cook
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -312,7 +312,7 @@ class ClusterType(ItemType):
 
         # add RDF
         xdstr += padding.rjust(indent + 6) + '<rdfs:Class rdf:about="mc-' + self.mcuid + '">\n'
-        xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#ClusterType"/>\n'
+        xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd#ClusterType"/>\n'
         xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model/RMC"/>\n'
         xdstr += padding.rjust(indent + 8) + '<rdfs:isDefinedBy rdf:resource="' + quote(self.definition_url.strip()) + '"/>\n'
         if len(self.pred_obj_list) > 0:  # are there additional predicate-object definitions?
@@ -355,7 +355,7 @@ class ClusterType(ItemType):
     
     def getJSONInstance(self, example):
         """
-        Return a JSON instance for the Participation.
+        Return a JSON instance.
         """
         xml = self.getXMLInstance(example)
         parsed = xmltodict.parse(xml, encoding='UTF-8', process_namespaces=False)

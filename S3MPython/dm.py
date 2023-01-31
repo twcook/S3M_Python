@@ -1,7 +1,7 @@
 """
 Data Model
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright, 2009 - 2023, Timothy W. Cook
 
 Licensed under the Apache License, Version 2.0 (the "License")
 you may not use this file except in compliance with the License.
@@ -302,7 +302,7 @@ class DMType(object):
     @property
     def md_language(self):
         """
-        A language of the intellectual content of the resource.
+        The language code of the intellectual content of the resource.
 
         Recommended best practice for the values of the Language
         element is defined by RFC 1766 [RFC1766] which includes
@@ -644,7 +644,7 @@ class DMType(object):
   xml:lang="en-US">
 
   <!-- Include the RM Schema -->
-  <xs:include schemaLocation="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd"/>
+  <xs:include schemaLocation="https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd"/>
     """
         return(xsd)
 

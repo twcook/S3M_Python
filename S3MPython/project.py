@@ -79,7 +79,7 @@ def configure():
             f.write("<!DOCTYPE catalog PUBLIC '-//OASIS//DTD XML Catalogs V1.1//EN' 'http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd'>\n")
             f.write("<catalog xmlns='urn:oasis:names:tc:entity:xmlns:xml:catalog'>\n")
             f.write("  <!-- S3Model 3.1.0 RM Schema -->\n")
-            f.write("  <uri name='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd' uri='" + PRJROOT + "/s3model/s3model_3_1_0.xsd'/>\n")
+            f.write("  <uri name='https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd' uri='" + PRJROOT + "/s3model/s3model_4_0_0.xsd'/>\n")
             f.write("\n")
             f.write("  <!-- S3Model DMs -->")
             f.write("  <rewriteSystem systemIdStartString='https://www.s3model.com/dmlib/' rewritePrefix='" + DM_LIB + "'/>\n")

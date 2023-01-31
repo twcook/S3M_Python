@@ -1,7 +1,7 @@
 """
 Meta information classes used by a data model (DMType)
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright, 2009 - 2023, Timothy W. Cook
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -353,7 +353,7 @@ class PartyType(MetaCommon):
         # and links or none will be written.
         party_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
         party_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
-        party_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#PartyType'/>\n")
+        party_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd#PartyType'/>\n")
         party_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
         party_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
         if len(self.pred_obj_list) != 0:
@@ -552,7 +552,7 @@ class AuditType(MetaCommon):
         # and links or none will be written.
         aud_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
         aud_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
-        aud_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd##AuditType'/>\n")
+        aud_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd##AuditType'/>\n")
         aud_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
         aud_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
         if len(self.pred_obj_list) != 0:
@@ -803,7 +803,7 @@ class AttestationType(MetaCommon):
         # and links or none will be written.
         att_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
         att_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
-        att_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#AttestationType'/>\n")
+        att_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd#AttestationType'/>\n")
         att_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
         att_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
         if len(self.pred_obj_list) != 0:
@@ -1045,7 +1045,7 @@ class ParticipationType(MetaCommon):
         # and links or none will be written.
         ptn_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
         ptn_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
-        ptn_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#ParticipationType'/>\n")
+        ptn_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd#ParticipationType'/>\n")
         ptn_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
         ptn_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
         if len(self.pred_obj_list) > 0:  # are there additional predicate-object definitions?
@@ -1148,7 +1148,7 @@ class ParticipationType(MetaCommon):
 
     def getJSONInstance(self, example):
         """
-        Return a JSON instance for the Participation.
+        Return a JSON instance.
         """
         xml = self.getXMLInstance(example)
         parsed = xmltodict.parse(xml, encoding='UTF-8', process_namespaces=False)

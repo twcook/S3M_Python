@@ -1,7 +1,7 @@
 """
-Utility functions to support data generation etc.
+Utility functions to support data generation.
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright, 2009 - 2023, Timothy W. Cook
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -142,7 +142,7 @@ def xsdstub(model):
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
       xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:s3m="https://www.s3model.com/ns/s3m/"
       targetNamespace="https://www.s3model.com/ns/s3m/">
-      <xs:include schemaLocation="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd"/>
+      <xs:include schemaLocation="https://www.s3model.com/ns/s3m/s3model_4_0_0.xsd"/>
 
     <xs:element name="root"/> <!-- This is a wrapper for the stub instance. It is not part of S3Model. -->
 
@@ -163,7 +163,7 @@ def xmlstub(model, example=False):
       xmlns:s3m="https://www.s3model.com/ns/s3m/"
       targetNamespace="https://www.s3model.com/ns/s3m/"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation='https://www.s3model.com/ns/s3m/ stub.xsd'
+      xsi:schemaLocation='https://www.s3model.com/ns/s3m/stub.xsd'
     >
 
     """)
