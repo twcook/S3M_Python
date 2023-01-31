@@ -5,12 +5,12 @@
     xmlns:dct="http://purl.org/dc/terms/"
     xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
     exclude-result-prefixes="xs xd"
-    version="2.0">
+    version="3.0">
     <xd:doc scope="stylesheet">
         <xd:desc>
-            <xd:p><xd:b>Stylesheet: Created on </xd:b> March 24, 2015</xd:p>
+            <xd:p><xd:b>Stylesheet: Created on </xd:b>2023-01-30</xd:p>
             <xd:p><xd:b>Author:</xd:b>Timothy W. Cook</xd:p>
-            <xd:p>Display the detailed description of data based on a S3Model Concept Model.</xd:p>
+            <xd:p>Display the detailed description of data based on a S3Model Data Model.</xd:p>
         </xd:desc>
     </xd:doc>
         
@@ -23,10 +23,10 @@
             <xsl:variable name="formlink" select="concat(//dct:identifier,'.html')"/>
             <h2 align="center" style="color:green">Data Description</h2>
             <p>This page describes data from XML instances, based on the concept names. It also provides
-            Information from the metadata section of the validating Concept Model (CM) 
+            Information from the metadata section of the Data Model (DM) 
             as defined by the knowledge modeler. For a visualization of the nesting structure for the data
-            please refer to the <b>HTML form</b> that acccompanies the CM distributed from the 
-                <a href='http://builder.s3model.com' target='_blank'>CM Builder</a>.</p>
+            please refer to the <b>HTML form</b> that acccompanies the DM distributed from the 
+                <a href='https://github.com/twcook/S3ModelTools' target='_blank'>S3Model Tools</a>.</p>
             <p><xsl:call-template name="metadata"/></p>
             <p><xsl:call-template name="PcT"/></p>
         </body>
@@ -35,12 +35,12 @@
     
     <xd:doc>
         <xd:desc>
-            <xd:p>A table for displaying the CM metadata.</xd:p>
+            <xd:p>A table for displaying the DM metadata.</xd:p>
         </xd:desc>
     </xd:doc>
     <xsl:template name="metadata">
-    <table title="CM Metadata" align="center" cellpadding="10" border="2" style="width:100%;font-size:12">
-        <caption style="font-size:18;font-weight:bold">CM Metadata</caption>
+    <table title="DM Metadata" align="center" cellpadding="10" border="2" style="width:100%;font-size:12">
+        <caption style="font-size:18;font-weight:bold">Data Model Metadata</caption>
         <tr><th>Name</th><th>Content</th></tr>
         <tr><td><b>Title:</b></td> <td><xsl:value-of select="//dct:title"/></td></tr>
         <tr><td><b>Reference Model:</b></td> <td> <xsl:value-of select="//xs:include/@schemaLocation"/></td></tr>
@@ -59,16 +59,16 @@
         
     <xd:doc>
         <xd:desc>
-            <xd:p>Show the modeling information about the data for each complexType.</xd:p>
+            <xd:p>Show the modeling information about the data for each Model Component (xsd:complexType).</xd:p>
         </xd:desc>
     </xd:doc>
-    <xsl:template name="PcT">
-        <table title="CM complexTypes" align="center" cellpadding="10" border="2" style="width:100%;font-size:12">
+    <xsl:template name="MC">
+        <table title="DM complexTypes" align="center" cellpadding="10" border="2" style="width:100%;font-size:12">
             <caption style="font-size:18;font-weight:bold">Data Element Descriptions</caption>
             <tr><th>Name</th><th>Definition</th><!--<th>Documentation</th>--><th>XML Element Name</th></tr>
             <xsl:for-each select="//xs:complexType">
                 
-                <!-- if there is a data-name or cluster subject (because they have a fixed attribute)then create a row -->
+                <!-- if there is a label with a fixed value, then create a row -->
                 <xsl:if test="xs:complexContent/xs:restriction/xs:sequence/xs:element/@fixed">
                 <tr>
 
