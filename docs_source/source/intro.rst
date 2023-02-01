@@ -33,7 +33,7 @@ You should install S3MPython into the `virtual environment <https://docs.python.
 
 
 
-The latest release candidate can be installed from the `Github <https://github.com/twcook/S3M_Python/>`_ project.
+The latest *release candidate* can be installed from the `Github <https://github.com/twcook/S3M_Python/>`_ project.
 
 .. code-block:: sh
 
@@ -52,7 +52,7 @@ Cross-Platform on Anaconda
 
 Anaconda is the **preferred environment** for a tool like S3MPython because it integrates easily with systems for domain experts, data engineers, and data scientists.
 
-- `Download and install <https://www.continuum.io/downloads>`_ Anaconda Python 3.7+ for your platform.
+- `Download and install <https://www.continuum.io/downloads>`_ the latest Anaconda Python for your platform.
 - More detailed Anaconda instructions are `here <https://docs.continuum.io/anaconda/install/>`_  if you prefer.
 
 
@@ -91,7 +91,7 @@ Build and install your development branch into your S3MPython environment.
 
 .. code-block:: sh
 
-    python3 setup.py sdist bdist_wheel
+    python setup.py sdist bdist_wheel
 
     pip install e .
 
@@ -119,7 +119,7 @@ Files
     This file is the required configuration file.
 
 - LICENSE
-    A copy of the copyright notice and license.
+    A copy of the *copyright notice* and *usage license*.
 
 
 Directories
@@ -132,9 +132,9 @@ Directories
     Support files required for operation.
 
     - s3model.owl - the core S3Model ontology.
-    - s3model_3_1_0.xsd - the reference model schema version 3.1.0
-    - s3model_3_1_0.rdf - the extracted semantics from the reference model schema version 3.1.0
-    - s3model_3_1_0.xsl - a stylesheet providing visualization in a browser of the reference model schema version 3.1.0
+    - s3model_4_0_0.xsd - the reference model schema version 4.4.0
+    - s3model_4_0_0.rdf - the extracted semantics from the reference model schema version 3.1.0
+    - s3model_4_0_0.xsl - a stylesheet providing visualization in a browser of the reference model schema version 3.1.0
     - dm-description.xsl - a stylesheet that provides for visualization in a browser of any S3Model data model. Just place it in the same directory with the dm-{cuid}.xsd file and open the schema in a browser.
 
 - S3MPython

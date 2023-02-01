@@ -17,15 +17,15 @@ Follow these steps in a terminal in your **project root directory**.
 
 .. code-block:: sh
 
-    python3
+    python
 
-You will now be inside a Python3 interpreter configured as your virtual environment.
+You will now be inside the Python interpreter in the *your project* virtual environment.
 
 .. _note:
      
      Your terminal will now show the Python interpreter prompt which is **>>>**
 
-Execute each of the lines below, in sequence.
+Execute each of the lines below, in this sequence.
 
 .. code-block:: py3
 
@@ -40,9 +40,11 @@ Configuration
 
 S3MPython has a significant number of configuration options, all with reasonable defaults.
 
-When the project is initialized a copy of the file *S3MPython.conf* is placed in the directory of your project root as well as a directory named *s3model*. This directory contains the validation files and ontology for S3Model.
+When the project is initialized a copy of the file *S3MPython.conf* is placed in the directory of your project root. A new folder is created in your project root named *s3model*. This directory contains the validation files and ontology for **S3Model**.
 
-Below is a copy of the *S3MPython.conf*. Using your favorite **plain-text editor**, you should open the *S3MPython.conf* file in your project, it will not have comments. Also the **prjpath:** variable should have the complete path to your project root as its value.
+Below is a copy of the *S3MPython.conf*. 
+
+Using your favorite **plain-text editor**, you should open the *S3MPython.conf* file in your project, it will not have comments. Also the **prjpath:** variable should have the complete path to your project root as its value.
 
 .. code-block:: ini
 
@@ -77,17 +79,24 @@ Below is a copy of the *S3MPython.conf*. Using your favorite **plain-text editor
 
     [NAMESPACES]
     ; any additional namespaces must be defined here with their abbreviations. One per line.
-    ; abbrev = namespace URI 
+    ; The format is;
+    ; abbrev = namespace URI
+    ; beginning in the first column. Some examples, that may be useful, are included.  
 
-    foaf: http://xmlns.com/foaf/0.1/
+    dul = http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#
+    foaf = http://xmlns.com/foaf/0.1/
+    sioc = http://rdfs.org/sioc/ns#
+    gr = http://purl.org/goodrelations/v1
+
 
     ; Below are where repository setups are defined for each of the three types of data generation.
     ; If a type is to be generated but no repository is defined for the type. Then the data will be generated
     ; and written to the filesystem in a subdirectory of the output directory.
+    ; For example, if ALLEGROGRAPH is **INACTIVE** then the RDF triples will be written to
+    ; a subdirectory named *rdf*. 
 
-
-    ; A default repository where we can write the output XML instead of to the filesystem.
-    ; The config will only process the first one with an ACTIVE status.
+    ; A default repository where we can write the output, instead of to the filesystem.
+    ; Edit the options as required for your installation.
 
     [BASEX]
     status: INACTIVE
@@ -130,9 +139,8 @@ Below is a copy of the *S3MPython.conf*. Using your favorite **plain-text editor
     ; There are no user editable options in the SYSTEM section.
 
     [SYSTEM]
-    version: 3.1.0.20
-    rmversion: 3.1.0
-
+    version: 4.0.0-a1
+    rmversion: 4.0.0
 
 In the **[SYSTEM]** section at the bottom, do not edit anything. These version numbers are important for proper operation of S3MPython. 
 
@@ -170,9 +178,8 @@ After you are satisfied with the configuration options follow these steps in a t
 
 **IF** you happened to have exited the Python interpreter in your terminal. You will need to restart it and run the configure function::
 
-    |    >>>python3
 
-    You will now be inside a Python3 interpreter configured as your virtual environment.
+    You will now be inside a Python interpreter configured inside your virtual environment.
     *NOTE:* Your terminal will now show the Python interpreter prompt which is **>>>**
 
     Execute each of the lines below, in sequence.
@@ -183,7 +190,7 @@ After you are satisfied with the configuration options follow these steps in a t
 
 This completes your S3MPython configuration.
 
-You can use the library to create S3Model models.
+You can use the S3MPython library to create S3Model models.
 
 For hands on experience we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. This is a set of Jupyter notebooks that walk through each of the data model components. The instructions for this tutorial is in the `User Guide <https://s3model.com/userguide/docs/index.html>`_.
 

@@ -17,7 +17,7 @@ Examples
 
 - Create a virtual environment. Here we are using `Anaconda <https://www.anaconda.com/products/individual>`_.::
 
-    conda create -n S3MPythonExamples pip
+    conda create -n S3MPythonExamples python pip
 
 - Activate the environment::
 

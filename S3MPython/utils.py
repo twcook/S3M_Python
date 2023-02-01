@@ -43,7 +43,7 @@ def reg_ns():
     """
     Return an etree object with registered namespaces.
     """
-    #  TODO: Implement customizable list to add to the defaults.
+    #  TODO: Implement customizable list to add to the defaults from S3MPython.conf.
     
     ns_dict = {}
     ns_dict['vc']="http://www.w3.org/2007/XMLSchema-versioning"

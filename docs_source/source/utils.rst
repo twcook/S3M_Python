@@ -8,7 +8,7 @@ There are a few utility functions that you may find useful.
 info.py
 -------
 
-- The **getInfo** function calls the settings script in S3MPython, which is driven by *S3MPython.conf* and prints version numbers and paths to the terminal.
+- The **getInfo** function calls the settings script in S3MPython, which is the information in *S3MPython.conf* and prints it to the terminal.
 
 - Start a Python shell::
 

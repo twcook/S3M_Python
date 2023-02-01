@@ -7,7 +7,5 @@ This Python implementation of `S3Model <https://s3model.com/index.html>`_ has a 
 
 Conformance
 -----------
-This Python implementation is in conformance with the 3.1.0 version of the S3Model Reference Implementation.
-
-
+This Python implementation is in conformance with the 4.0.0 version of the S3Model Reference Implementation.
 
