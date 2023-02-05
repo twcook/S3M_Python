@@ -63,8 +63,8 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation
-docs/_build/
+# documentation
+site/
 
 # PyBuilder
 target/
@@ -111,3 +111,5 @@ S3MPython_code.code-workspace
 S3M_Python.wpr
 S3M_Python.wpu
 
+S3MPython.xpr
+S3MPython/catalog.xml

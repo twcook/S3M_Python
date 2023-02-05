@@ -1,0 +1,31 @@
+name: S3MPython
+channels:
+  - defaults
+dependencies:
+  - libxml2
+  - libxslt
+  - lxml
+  - openssl
+  - pip
+  - python
+  - pytz
+  - requests
+  - requests-toolbelt
+  - setuptools
+  - sqlite
+  - twine
+  - urllib3
+  - wheel
+  - xmltodict
+  - zlib
+  - pip:
+    - cuid
+    - e
+    - exrex
+    - imagesize
+    - jinja2
+    - jsonschema
+    - markupsafe
+    - packaging
+    - pyparsing
+    - validator-collection
