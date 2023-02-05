@@ -1,9 +1,10 @@
 site_name: S3Model - Python Implementation
 copyright: 'Copyright 2009 - 2023 Timothy W. Cook - All Rights Reserved.'
+site_url: 'https://s3model.com/'
 theme:
     locale: en
     site_dir: site
-    version: 4.0.0
+    version: 4.0.0-01
     name: material
     features:
       - navigation.instant
@@ -23,14 +24,16 @@ theme:
     
 
 nav:
-    - Home: 'index.md'
-    - Overview: 'front.md'
-    - Reference Model: 'rm.md'
-    - Tools: 'tools.md'
+    - Home: 'https://s3model.com/'
+    - Specifications: 'https://s3model.com/specifications/docs/'
+    - XSD Implementation: 'https://s3model.com/S3Model/docs/'
+    - Python Implementation: 'https://s3model.com/S3MPython/docs/'
+    - Tools: 'https://s3model.com/Tools/docs/'
     - Contributing: 'Contributing.md'
-    - Support: 'support.md'
-    - Glossary: 'glossary.md'
-    - License: 'LICENSE.md'
+    - Issue Reporting: 'https://github.com/twcook/s3model/issues'
+    - Glossary: 'https://s3model.com/specifications/docs/glossary.html'
+    - Contibuting: 'Contributing.md'
+    - License: 'license.md'
 
 extra:
   analytics:
