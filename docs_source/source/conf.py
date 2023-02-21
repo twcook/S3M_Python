@@ -21,13 +21,13 @@ import sphinx_rtd_theme
 import configparser
 
 config = configparser.ConfigParser()
-config.read('../../S3MPython/S3MPython.conf')
+config.read('../../S3MPython/conf/S3MPython.conf')
 VERSION = config['SYSTEM']['version']
 RMVERSION = config['SYSTEM']['rmversion']
 # -- Project information -----------------------------------------------------
 
 project = 'S3MPython'
-copyright = '2009 - 2023, Timothy W. Cook'
+copyright = '2009 - 2019, Data Insights, Inc. https://datainsights.tech  '
 author = 'Timothy W. Cook'
 
 # The short X.Y version

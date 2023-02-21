@@ -1,7 +1,7 @@
 """
 Structural items.
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright 2018-2023, Timothy W. Cook 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -135,12 +135,12 @@ class XdAdapterType(ItemType):
         indent = 2
         padding = ('').rjust(indent)
         xdstr = ''
-        xdstr += padding.rjust(indent) + '\n<xs:element name="ms-' + self.mcuid + '" substitutionGroup="s3m:Items" type="s3m:mc-' + self.mcuid + '"/>\n'
-        xdstr += padding.rjust(indent) + '<xs:complexType name="mc-' + self.mcuid + '">\n'
+        xdstr += padding.rjust(indent) + f'\n<xs:element name="ms-{self.mcuid}" substitutionGroup="s3m:Items" type="s3m:mc-{self.mcuid}"/>\n'
+        xdstr += padding.rjust(indent) + f'<xs:complexType name="mc-{self.mcuid}">\n'
         xdstr += padding.rjust(indent + 2) + '<xs:complexContent>\n'
         xdstr += padding.rjust(indent + 4) + '<xs:restriction base="s3m:XdAdapterType">\n'
         xdstr += padding.rjust(indent + 6) + '<xs:sequence>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="unbounded" minOccurs="0" ref="s3m:ms-' + self.value.mcuid + '"/>\n'
+        xdstr += padding.rjust(indent + 8) + f'<xs:element maxOccurs="unbounded" minOccurs="0" ref="s3m:ms-{self.value.mcuid}"/>\n'
         xdstr += padding.rjust(indent + 6) + '</xs:sequence>\n'
         xdstr += padding.rjust(indent + 4) + '</xs:restriction>\n'
         xdstr += padding.rjust(indent + 2) + '</xs:complexContent>\n'
@@ -302,8 +302,8 @@ class ClusterType(ItemType):
         indent = 2
         padding = ('').rjust(indent)
         xdstr = ''
-        xdstr += padding.rjust(indent) + '\n<xs:element name="ms-' + self.mcuid + '" substitutionGroup="s3m:Item" type="s3m:mc-' + self.mcuid + '"/>\n'
-        xdstr += padding.rjust(indent) + '<xs:complexType name="mc-' + self.mcuid + '">\n'
+        xdstr += padding.rjust(indent) + f'\n<xs:element name="ms-{self.mcuid}" substitutionGroup="s3m:Item" type="s3m:mc-{self.mcuid}"/>\n'
+        xdstr += padding.rjust(indent) + f'<xs:complexType name="mc-{self.mcuid}">\n'
         xdstr += padding.rjust(indent + 2) + '<xs:annotation>\n'
         xdstr += padding.rjust(indent + 4) + '<xs:documentation>\n'
         xdstr += padding.rjust(indent + 6) + escape(self.docs.strip()) + '\n'
@@ -311,24 +311,24 @@ class ClusterType(ItemType):
         xdstr += padding.rjust(indent + 4) + '<xs:appinfo>\n'
 
         # add RDF
-        xdstr += padding.rjust(indent + 6) + '<rdfs:Class rdf:about="mc-' + self.mcuid + '">\n'
+        xdstr += padding.rjust(indent + 6) + f'<rdfs:Class rdf:about="mc-{self.mcuid}">\n'
         xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#ClusterType"/>\n'
         xdstr += padding.rjust(indent + 8) + '<rdfs:subClassOf rdf:resource="https://www.s3model.com/ns/s3m/s3model/RMC"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<rdfs:isDefinedBy rdf:resource="' + quote(self.definition_url.strip()) + '"/>\n'
+        xdstr += padding.rjust(indent + 8) + f'<rdfs:isDefinedBy rdf:resource="{quote(self.definition_url.strip())}"/>\n'
         if len(self.pred_obj_list) > 0:  # are there additional predicate-object definitions?
             for po in self.pred_obj_list:
                 pred = po[0]
                 obj = po[1]
-                xdstr += padding.rjust(indent + 8) + '<' + pred.strip() + ' rdf:resource="' + quote(obj.strip()) + '"/>\n'
+                xdstr += padding.rjust(indent + 8) + f'<{pred.strip()} rdf:resource="{quote(obj.strip())}"/>\n'
         xdstr += padding.rjust(indent + 6) + '</rdfs:Class>\n'
         xdstr += padding.rjust(indent + 4) + '</xs:appinfo>\n'
         xdstr += padding.rjust(indent + 2) + '</xs:annotation>\n'
         xdstr += padding.rjust(indent + 2) + '<xs:complexContent>\n'
         xdstr += padding.rjust(indent + 4) + '<xs:restriction base="s3m:ClusterType">\n'
         xdstr += padding.rjust(indent + 6) + '<xs:sequence>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="1" name="label" type="xs:string" fixed="' + self.label.strip() + '"/>\n'
+        xdstr += padding.rjust(indent + 8) + f'<xs:element maxOccurs="1" minOccurs="1" name="label" type="xs:string" fixed="{self.label.strip()}"/>\n'
         for item in self.items:
-            xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="0" ref="s3m:ms-' + item.value.acuid + '"/>\n'
+            xdstr += padding.rjust(indent + 8) + f'<xs:element maxOccurs="1" minOccurs="0" ref="s3m:ms-{item.value.acuid}"/>\n'
         xdstr += padding.rjust(indent + 6) + '</xs:sequence>\n'
         xdstr += padding.rjust(indent + 4) + '</xs:restriction>\n'
         xdstr += padding.rjust(indent + 2) + '</xs:complexContent>\n'
@@ -346,11 +346,11 @@ class ClusterType(ItemType):
         indent = '  '
         xmlstr = ''
  
-        xmlstr += indent + "<s3m:ms-" + self.mcuid + ">\n"
-        xmlstr += indent + "  <label>" + escape(self.label.strip()) + "</label>\n"
+        xmlstr += indent + "<s3m:ms-{self.mcuid}>\n"
+        xmlstr += indent + f"  <label>{escape(self.label.strip())}</label>\n"
         for adapter in self.items:
             xmlstr += adapter.value.getXMLInstance(example)
-        xmlstr += indent + "</s3m:ms-" + self.mcuid + ">\n"
+        xmlstr += indent + f"</s3m:ms-{self.mcuid}>\n"
         return(xmlstr)
     
     def getJSONInstance(self, example):

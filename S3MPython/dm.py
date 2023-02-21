@@ -1,7 +1,7 @@
 """
 Data Model
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright 2018-2023, Timothy W. Cook 
 
 Licensed under the Apache License, Version 2.0 (the "License")
 you may not use this file except in compliance with the License.
@@ -17,17 +17,20 @@ limitations under the License.
 """
 
 import os
+import json
+import xmltodict
+
 from xml.sax.saxutils import escape
 from urllib.parse import quote
 
 from datetime import datetime
 from collections import OrderedDict
-from typing import ByteString, Dict, List, Tuple, Iterable
+from typing import Iterable
 
 from cuid import cuid
 
 from .settings import DM_LIB, get_acs, ACSFILE
-from .utils import fetch_acs
+from .utils import fetch_acs, reg_ns
 from .xdt import XdStringType, XdLinkType
 from .struct import ClusterType
 from .meta import ParticipationType, PartyType, AuditType, AttestationType
@@ -41,10 +44,10 @@ ACS = get_acs(ACSFILE)
 
 class DMType(object):
     """
-    This is the root node of a Data Model (DM)
+    This is the root node/container of a Data Model (DM)
     """
 
-    def __init__(self, title):
+    def __init__(self, title: str):
         """
         The Data Model is the wrapper for all of the data components as well as the semantics.
         """
@@ -68,7 +71,7 @@ class DMType(object):
         self._published = False
 
     def __str__(self):
-        return("S3Model Data Model\n" + "ID: " + self.mcuid + "\n" + self.showMetadata(self.metadata))
+        return(f'S3Model Data Model\n" + "ID: dm-" {self.mcuid} "\n" {self.showMetadata(self.metadata)}')
 
     def showMetadata(self):
         mdStr = ''
@@ -83,14 +86,14 @@ class DMType(object):
         md = OrderedDict()
         md['creator'] = 'Unknown'
         md['contribs'] = []
-        md['subject'] = 'S3M Data Model Example'
+        md['subject'] = 'S3Model - Data Model Example'
         md['rights'] = 'Creative Commons'
         md['relation'] = 'None'
         md['coverage'] = 'Global'
         md['description'] = 'Needs a description.'
-        md['publisher'] = 'Data Insights, Inc.'
+        md['publisher'] = 'S3Model.com'
         md['language'] = 'en-US'
-        md['identifier'] = 'dm-' + self.mcuid
+        md['identifier'] = f'dm-{self.mcuid}'
         return(md)
 
     @property
@@ -157,7 +160,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['creator'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value the 'md_creator' attribute must be a string.")
 
     @property
     def md_contrib(self):
@@ -175,7 +178,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['contribs'].append(v.strip())
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'md_contrib' attribute must be a string.")
 
     @property
     def md_subject(self):
@@ -196,7 +199,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['subject'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'md_subject' attribute must be a string.")
 
     @property
     def md_rights(self):
@@ -219,7 +222,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['rights'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'md_rights' attribute must be a string.")
 
     @property
     def md_relation(self):
@@ -235,7 +238,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['relation'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'md_relation' attribute must be a string.")
 
     @property
     def md_coverage(self):
@@ -260,7 +263,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['coverage'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'md_coverage' attribute must be a string.")
 
     @property
     def md_description(self):
@@ -278,7 +281,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['description'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value the 'md_description' attribute must be a string.")
 
     @property
     def md_publisher(self):
@@ -297,7 +300,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['publisher'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'md_publisher' attribute must be a string.")
 
     @property
     def md_language(self):
@@ -319,7 +322,7 @@ class DMType(object):
         if isinstance(v, str):
             self._metadata['language'] = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of 'md_language' attribute must be a string.")
 
     @property
     def encoding(self):
@@ -335,7 +338,7 @@ class DMType(object):
         if isinstance(v, str):
             self._dm_encoding = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'encoding' attribute must be a string.")
 
     @property
     def state(self):
@@ -350,7 +353,7 @@ class DMType(object):
         if isinstance(v, str):
             self._current_state = v
         else:
-            raise TypeError("the value must be a string.")
+            raise TypeError("the value of the 'state' attribute must be a string.")
 
     @property
     def data(self):
@@ -364,7 +367,7 @@ class DMType(object):
         if self._data is None and isinstance(v, ClusterType):
             self._data = v
         else:
-            raise TypeError("the data attribute must be empty and the value passed must be a ClusterType.")
+            raise TypeError("the 'data' attribute must be empty and the value passed must be a ClusterType.")
 
     @property
     def subject(self):
@@ -381,7 +384,7 @@ class DMType(object):
         if isinstance(v, PartyType):
             self._subject = v
         else:
-            raise TypeError("the value must be a PartyType.")
+            raise TypeError("the value of the 'subject' attribute must be a PartyType.")
 
     @property
     def provider(self):
@@ -400,7 +403,7 @@ class DMType(object):
         if isinstance(v, PartyType):
             self._provider = v
         else:
-            raise TypeError("the value must be a PartyType.")
+            raise TypeError("the value of the 'provider' attribute must be a PartyType.")
 
     @property
     def participations(self):
@@ -414,7 +417,7 @@ class DMType(object):
         if isinstance(v, ParticipationType):
             self._participations.append(v)
         else:
-            raise TypeError("the value must be a ParticipationType.")
+            raise TypeError("the value of the 'participation' attribute must be a ParticipationType.")
 
     @property
     def protocol(self):
@@ -429,7 +432,7 @@ class DMType(object):
         if isinstance(v, XdStringType):
             self._protocol = v
         else:
-            raise TypeError("the value must be a XdStringType.")
+            raise TypeError("the value for the 'protocol' attribute must be a XdStringType.")
 
     @property
     def workflow(self):
@@ -444,7 +447,7 @@ class DMType(object):
         if isinstance(v, XdLinkType):
             self._workflow = v
         else:
-            raise TypeError("the value must be a XdLinkType.")
+            raise TypeError("the value for the 'workflow' attribute must be an XdLinkType.")
 
 
     @property
@@ -459,10 +462,10 @@ class DMType(object):
         if isinstance(v, XdLinkType):
             self._acs = v
         else:
-            raise TypeError("the value must be a XdLinkType.")
+            raise TypeError("the value of the 'acs' attribute must be a XdLinkType.")
 
         global ACS
-        ACS = fetch_acs(acs.link)
+        ACS = fetch_acs(self._acs.link)
 
     @property
     def audits(self):
@@ -476,7 +479,7 @@ class DMType(object):
         if isinstance(v, AuditType):
             self._audits.append(v)
         else:
-            raise TypeError("the value must be an AuditType.")
+            raise TypeError("the value of the 'audits' attribute must be an AuditType.")
 
     @property
     def attestation(self):
@@ -490,7 +493,7 @@ class DMType(object):
         if isinstance(v, AttestationType):
             self._attestation = v
         else:
-            raise TypeError("the value must be a AttestationType.")
+            raise TypeError("the value of 'attestation' must be a AttestationType.")
 
     @property
     def links(self):
@@ -504,29 +507,36 @@ class DMType(object):
         if isinstance(v, XdLinkType):
             self._links.append(v)
         else:
-            raise TypeError("the value must be an XdLinkType.")
+            raise TypeError("the value for 'links' must be an XdLinkType.")
 
 
 
     def __str__(self):
-        if self.validate():
-            return(self.__class__.__name__ + ' : ' + self.label + ', ID: ' + self.mcuid)
+        val = self.validate()
+        if val[0] is True:
+            return(f"Type: {self.__class__.__name__} Title: {self.label} ID: dm-{self.mcuid}\n{val[1]}")
         else:
-            raise ValidationError(self.__class__.__name__ + ' : ' + self.label + " failed validation.")
+            raise ValidationError(f"{self.__class__.__name__}, {self.label} failed validation.\n{val[1]}")
 
     def validate(self):
         """
         Validation called before exporting code or execution of the __str__ method.
         """
-
-        return(True)
+        valid = True
+        msg = ''
+        msg += "Published\n" if self._published else "Not Published\n"
+        valid = False if self.label is None else valid
+        valid = False if self._published and self.data == None else valid    
+        
+        # TODO: improve validation
+        return((valid, msg))
 
     def exportDM(self):
         """
         Return a XML Schema for a complete Data Model.
         """
         if self._published:
-            raise PublicationError(self.label + " - " + self.metadata['identifier'] + " -- This Data Model has already been published.")
+            raise PublicationError(f"{self.label} -  {self.metadata['identifier']} -- This Data Model has already been published.")
         indent = 0
         padding = ('').rjust(indent)
         xdstr = ''
@@ -614,10 +624,11 @@ class DMType(object):
                 xdstr += self.link.getModel()
         xdstr += "</xs:schema>"
 
-        with open(os.path.join(DM_LIB, 'dm-' + self.mcuid + '.xsd'), 'w') as f:
+        schema = os.path.join(DM_LIB, 'dm-' + self.mcuid + '.xsd')
+        with open(schema, 'w') as f:
             f.write(xdstr)
 
-        msg = "Wrote " + os.path.join(DM_LIB, 'dm-' + self.mcuid + '.xsd')
+        msg = f"Wrote {schema} to disk."
         self._published = True
         return(msg)
 
@@ -625,28 +636,22 @@ class DMType(object):
         """
         Return the data model schema header.
         """
-        xsd = """<?xml version="1.0" encoding="UTF-8"?>
+        namespaces = reg_ns()
+
+        xsdheader = """<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="dm-description.xsl"?>
 <xs:schema
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:owl="http://www.w3.org/2002/07/owl#"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:sawsdlrdf="http://www.w3.org/ns/sawsdl#"
-  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-  xmlns:s3m="https://www.s3model.com/ns/s3m/"
-  xmlns:sh="http://www.w3.org/ns/shacl"
+"""
+        for ns in namespaces:
+            xsdheader += f'  xmlns:{ns}="{namespaces[ns]}"\n'
+        xsdheader +="""
   targetNamespace="https://www.s3model.com/ns/s3m/"
   xml:lang="en-US">
 
   <!-- Include the RM Schema -->
   <xs:include schemaLocation="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd"/>
-    """
-        return(xsd)
+"""
+        return(xsdheader)
 
     def _metaxsd(self):
         """
@@ -654,27 +659,27 @@ class DMType(object):
         """
         contribs = ''
         for contrib in self.metadata['contribs']:
-            contribs += "<dc:contributor>" + contrib + "</dc:contributor>\n    "
-        contribs = contribs.strip('\n    ') # remove the last newline
-        md = """
+            contribs += f"<dc:contributor>{contrib}</dc:contributor>\n"
+        contribs = contribs.strip('\n') # remove the last newline
+        md = f"""
 
   <!-- Dublin Core Metadata -->
   <xs:annotation><xs:appinfo><rdf:RDF><rdf:Description
-    rdf:about='dm-""" + self.mcuid + """' >
-    <dc:title>""" + self.label.strip() + """</dc:title>
-    <dc:creator>""" + self.metadata['creator'] + """</dc:creator>
-    """ + contribs + """
-    <dc:dc_subject>""" + self.metadata['subject'] + """</dc:dc_subject>
-    <dc:rights>""" + self.metadata['rights'] + """</dc:rights>
-    <dc:relation>""" + self.metadata['relation'] + """</dc:relation>
-    <dc:coverage>""" + self.metadata['coverage'] + """</dc:coverage>
+    rdf:about='dm-{self.mcuid}'>
+    <dc:title>{self.label.strip()}</dc:title>
+    <dc:creator>{self.metadata['creator']}</dc:creator>
+         {contribs}
+    <dc:dc_subject>{self.metadata['subject']}</dc:dc_subject>
+    <dc:rights>{self.metadata['rights']}</dc:rights>
+    <dc:relation>{self.metadata['relation']}</dc:relation>
+    <dc:coverage>{self.metadata['coverage']}</dc:coverage>
     <dc:type>S3Model Data Model (DM)</dc:type>
-    <dc:identifier>dm-""" + self.mcuid + """</dc:identifier>
-    <dc:description>""" + self.metadata['description'] + """</dc:description>
-    <dc:publisher>""" + self.metadata['publisher'] + """</dc:publisher>
-    <dc:date>""" + '{0:%Y-%m-%d}'.format(datetime.now()) + """</dc:date>
+    <dc:identifier>dm-{self.mcuid}</dc:identifier>
+    <dc:description>{self.metadata['description']}</dc:description>
+    <dc:publisher>{self.metadata['publisher']}</dc:publisher>
+    <dc:date>{'{0:%Y-%m-%d}'.format(datetime.now())}</dc:date>
     <dc:format>text/xml</dc:format>
-    <dc:language>""" + self.metadata['language'] + """</dc:language>
+    <dc:language>{self.metadata['language']}</dc:language>
   </rdf:Description></rdf:RDF></xs:appinfo></xs:annotation>
 
         """
@@ -694,8 +699,8 @@ class DMType(object):
         padding = ('').rjust(indent)
 
         xmlstr = ''
-        xmlstr += """<?xml version="1.0" encoding="UTF-8"?>
-<s3m:dm-0d4cbab9-7288-40e2-acaa-7651386a8430 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlstr += f"""<?xml version="1.0" encoding="UTF-8"?>
+<s3m:dm-{self._mcuid} xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
  xmlns:s3m="https://www.s3model.com/ns/s3m/"
@@ -705,16 +710,16 @@ class DMType(object):
  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
- xsi:schemaLocation='https://www.s3model.com/dmlib file:""" + DM_LIB + os.sep + """dm-""" + self.mcuid + """.xsd'>
+ xsi:schemaLocation='https://www.s3model.com/dmlib file: {DM_LIB}{os.sep}dm-{self.mcuid}.xsd'>
 
         """
-        xmlstr += padding + "<s3m:dm-" + self.mcuid + ">\n"
-        xmlstr += padding + "  <label>" + escape(self.label) + "</label>\n"
-        xmlstr += padding + "  <dm-language>" + escape(self.language) + "</dm-language>\n"
-        xmlstr += padding + "  <dm-encoding>" + escape(self.encoding) + "</dm-encoding>\n"
-        xmlstr += padding + "  <current-state>" + escape(self.state) + "</current-state>\n"
+        xmlstr += padding + f"<s3m:dm-{self.mcuid}>\n"
+        xmlstr += padding + f"  <label>{escape(self.label)}</label>\n"
+        xmlstr += padding + f"  <dm-language>{escape(self.language)}</dm-language>\n"
+        xmlstr += padding + f"  <dm-encoding>{escape(self.encoding)}</dm-encoding>\n"
+        xmlstr += padding + f"  <current-state>{escape(self.state)}</current-state>\n"
         # TODO: get the XML for all the other components
-        xmlstr += padding + "</s3m:dm-" + self.mcuid + ">\n"
+        xmlstr += padding + f"</s3m:dm-{self.mcuid}>\n"
         return(xmlstr)
 
     def exportJSON(self, example):
@@ -731,9 +736,7 @@ class DMType(object):
         """
         Return the RDF/XML Triples for the Model.
         """
-        indent = 2
-        padding = ('').rjust(indent)
-
-        xmlstr = 'TODO: Write template.'
-        return(xmlstr)
+        
+        rdfstr = 'TODO: Write template.'
+        return(rdfstr)
 

@@ -3,8 +3,8 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 
   <!-- S3Model 3.1.0 RM Schema -->
-  <uri name="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd" uri="(path to project root)/s3model/s3model_3_1_0.xsd"/>
+  <uri name="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd" uri="/home/tim/DII/S3Model/RM/3_1_0/s3model_3_1_0.xsd"/>
   
   <!-- S3Model DMs -->
-  <rewriteSystem systemIdStartString="https://dmgen.s3model.com/dmlib/" rewritePrefix="(path to project root)/DM_Library/"/>
+  <rewriteSystem systemIdStartString="https://dmgen.s3model.com/dmlib/" rewritePrefix="/home/tim/DII/DM_Library/"/>
 </catalog>

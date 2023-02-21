@@ -1,7 +1,7 @@
 """
 Defines the S3Model ontology in Python 3.7
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright 2018-2023, Timothy W. Cook 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

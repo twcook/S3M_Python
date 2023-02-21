@@ -1,7 +1,7 @@
 """
 Meta information classes used by a data model (DMType)
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright 2018-2023, Timothy W. Cook 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -344,7 +344,7 @@ class PartyType(MetaCommon):
         padding = ('').rjust(indent)
         party_str = ''
         # Create the datatype
-        party_str += '\n\n' + padding.rjust(indent) + ("<xs:complexType name='mc-" + self.mcuid + "'> \n")
+        party_str += '\n\n' + padding.rjust(indent) + (f"<xs:complexType name='mc-{self.mcuid}'> \n")
         party_str += padding.rjust(indent + 2) + ("<xs:annotation>\n")
         party_str += padding.rjust(indent + 2) + ("<xs:documentation>\n")
         party_str += padding.rjust(indent + 4) + (escape(self.docs) + "\n")
@@ -352,28 +352,28 @@ class PartyType(MetaCommon):
         # Write the semantic links. There must be the same number of attributes
         # and links or none will be written.
         party_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
-        party_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
+        party_str += padding.rjust(indent + 2) + (f"<rdfs:Class rdf:about='mc-{self.mcuid}'>\n")
         party_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#PartyType'/>\n")
         party_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
-        party_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
+        party_str += padding.rjust(indent + 2) + (f"<rdfs:label>{escape(self.label.strip())}</rdfs:label>\n")
         if len(self.pred_obj_list) != 0:
             for po in self.pred_obj_list:
-                party_str += padding.rjust(indent + 2) + ("<" + po.predicate.ns_abbrev.__str__() + ":" + po.predicate.class_name.strip() + " rdf:resource='" + quote(po.object_uri) + "'/>\n")
+                party_str += padding.rjust(indent + 2) + (f"<{po.predicate.ns_abbrev.__str__()} : {po.predicate.class_name.strip()} rdf:resource='{quote(po.object_uri)}'/>\n")
         party_str += padding.rjust(indent + 2) + ("</rdfs:Class>\n")
         party_str += padding.rjust(indent + 2) + ('</xs:appinfo>\n')
         party_str += padding.rjust(indent + 2) + ("</xs:annotation>\n")
         party_str += padding.rjust(indent + 2) + ("<xs:complexContent>\n")
         party_str += padding.rjust(indent + 4) + ("<xs:restriction base='s3m:PartyType'>\n")
         party_str += padding.rjust(indent + 6) + ("<xs:sequence>\n")
-        party_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed=" + '"' + escape(self.label.strip()) + '"' + "/>\n")
+        party_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed='{escape(self.label.strip())}'/>\n")
 
         party_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='0' name='party-name' type='xs:string'/>\n")
 
         if self.party_ref:
-            party_str += padding.rjust(indent + 8) + "<xs:element maxOccurs='1' minOccurs='0' name='party-ref' type='s3m:mc-" + self.party_ref.mcuid + "'/>\n"
+            party_str += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='0' name='party-ref' type='s3m:mc-{self.party_ref.mcuid}'/>\n"
 
         if self.party_details:
-            party_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='0' name='party-details' type='s3m:mc-" + self.party_details.mcuid + "'/>\n")
+            party_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='0' name='party-details' type='s3m:mc-{self.party_details.mcuid}'/>\n")
 
         party_str += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         party_str += padding.rjust(indent + 6) + ("</xs:restriction>\n")
@@ -399,27 +399,27 @@ class PartyType(MetaCommon):
         padding = ('').rjust(indent)
 
         xmlstr = ''
-        xmlstr += padding + "<s3m:ms-" + self.mcuid + ">\n"
-        xmlstr += padding + "  <label>" + escape(self.label) + "</label>\n"
+        xmlstr += padding + f"<s3m:ms-{self.mcuid}>\n"
+        xmlstr += padding + f"  <label>{escape(self.label)}</label>\n"
         if self.party_name is not None:
-            xmlstr += padding + "  <party-name>" + escape(self.party_name) + "</party-name>\n"
+            xmlstr += padding + f"  <party-name>{escape(self.party_name)}</party-name>\n"
         if self.party_ref is not None:
             xmlstr += padding + "  <party-ref>\n"
-            xmlstr += padding + '    <label>' + self.party_ref.label + '</label>\n'
-            xmlstr += padding + '    <link>' + self.party_ref.link + '</link>\n'
-            xmlstr += padding + '    <relation>' + self.party_ref.relation + '</relation>\n'
-            xmlstr += padding + '    <relation-uri>' + self.party_ref.relation_uri + '</relation-uri>\n'
+            xmlstr += padding + f'    <label>{self.party_ref.label}</label>\n'
+            xmlstr += padding + f'    <link>{self.party_ref.link}</link>\n'
+            xmlstr += padding + f'    <relation>{self.party_ref.relation}</relation>\n'
+            xmlstr += padding + f'    <relation-uri>{self.party_ref.relation_uri}</relation-uri>\n'
             xmlstr += padding + "  </party-ref>\n"
     
         if self.party_details is not None:
             xmlstr += padding + "  <party-details>\n"
-            xmlstr += padding + "    <label>" + escape(self.party_details.label.strip()) + "</label>\n"
+            xmlstr += padding + f"    <label>{escape(self.party_details.label.strip())}</label>\n"
             for adapter in self.party_details.items:
                 xmlstr += adapter.value.getXMLInstance(example)
 
             xmlstr += padding + "  </party-details>\n"
         
-        xmlstr += padding + "</s3m:ms-" + self.mcuid + ">\n"
+        xmlstr += padding + f"</s3m:ms-{self.mcuid}>\n"
         return(xmlstr)
 
     def getJSONInstance(self, example):
@@ -543,7 +543,7 @@ class AuditType(MetaCommon):
         aud_str = ''
 
         # Create the datatype
-        aud_str += '\n\n' + padding.rjust(indent) + ("<xs:complexType name='mc-" + self.mcuid + "' xml:lang='" + self.language + "'>\n")
+        aud_str += '\n\n' + padding.rjust(indent) + (f"<xs:complexType name='mc-{self.mcuid}' xml:lang='{self.language}'>\n")
         aud_str += padding.rjust(indent + 2) + ("<xs:annotation>\n")
         aud_str += padding.rjust(indent + 2) + ("<xs:documentation>\n")
         aud_str += padding.rjust(indent + 4) + (escape(self.docs) + "\n")
@@ -551,37 +551,37 @@ class AuditType(MetaCommon):
         # Write the semantic links. There must be the same number of attributes
         # and links or none will be written.
         aud_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
-        aud_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
+        aud_str += padding.rjust(indent + 2) + (f"<rdfs:Class rdf:about='mc-{self.mcuid}'>\n")
         aud_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd##AuditType'/>\n")
         aud_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
-        aud_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
+        aud_str += padding.rjust(indent + 2) + (f"<rdfs:label>{escape(self.label.strip())}</rdfs:label>\n")
         if len(self.pred_obj_list) != 0:
             for po in self.pred_obj_list:
                 pred = po[0]
                 obj = po[1]
-                xdstr += padding.rjust(indent + 8) + '<' + pred.strip() + ' rdf:resource="' + quote(obj.strip()) + '"/>\n'
+                xdstr += padding.rjust(indent + 8) + f'<{pred.strip()} rdf:resource="{quote(obj.strip())}"/>\n'
         aud_str += padding.rjust(indent + 2) + ("</rdfs:Class>\n")
         aud_str += padding.rjust(indent + 2) + ('</xs:appinfo>\n')
         aud_str += padding.rjust(indent + 2) + ("</xs:annotation>\n")
         aud_str += padding.rjust(indent + 2) + ("<xs:complexContent>\n")
         aud_str += padding.rjust(indent + 4) + ("<xs:restriction base='s3m:AuditType'>\n")
         aud_str += padding.rjust(indent + 6) + ("<xs:sequence>\n")
-        aud_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed=" + '"' + escape(self.label.strip()) + '"' + "/>\n")
+        aud_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed='{escape(self.label.strip())}'/>\n")
 
         if self.system_id is None:
             raise ValueError("System ID: (XdString) is missing.")
         else:
-            aud_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='system-id' type='s3m:mc-" + str(self.system_id.mcuid) + "'/>\n")
+            aud_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='system-id' type='s3m:mc-{str(self.system_id.mcuid)}'/>\n")
 
         if self.system_user is None:
-            raise ValueError("System User: (Party) " + self.system_user.__str__().strip() + " is missing.")
+            raise ValueError(f"System User: (Party) {self.system_user.__str__().strip()} is missing.")
         else:
-            aud_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='0' name='system-user' type='s3m:mc-" + str(self.system_user.mcuid) + "'/>\n")
+            aud_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='0' name='system-user' type='s3m:mc-{str(self.system_user.mcuid)}'/>\n")
 
         if self.location is None:
             raise ValueError("Location: (Cluster) " + self.location.__str__().strip() + " is missing.")
         else:
-            aud_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='0' name='location' type='s3m:mc-" + str(self.location.mcuid) + "'/>\n")
+            aud_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='0' name='location' type='s3m:mc-{str(self.location.mcuid)}'/>\n")
 
         aud_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='timestamp' type='xs:dateTime'/>\n")
 
@@ -607,8 +607,8 @@ class AuditType(MetaCommon):
         padding = ('').rjust(indent)
  
         xmlstr = ''
-        xmlstr = padding + "<s3m:ms-" + str(self.mcuid) + ">\n"
-        xmlstr += padding + "  <label>" + escape(self.label.strip()) + "</label>\n"
+        xmlstr = padding + f"<s3m:ms-{str(self.mcuid)}>\n"
+        xmlstr += padding + f"  <label>{escape(self.label.strip())}</label>\n"
         if self.system_id is not None:
             xmlstr += padding + "  <system-id>\n"
             xmlstr += padding + self.system_id.getXMLInstance(example)
@@ -624,8 +624,8 @@ class AuditType(MetaCommon):
             xmlstr += padding + self.location.getXMLInstance(example)
             xmlstr += padding + "  </location>\n"
         if self.timestamp is not None:
-            xmlstr += padding + "  <timestamp>" + self.timestamp.isoformat() + "</timestamp>\n"
-        xmlstr += padding + "</s3m:ms-" + str(self.mcuid) + ">\n"
+            xmlstr += padding + f"  <timestamp>{self.timestamp.isoformat()}</timestamp>\n"
+        xmlstr += padding + f"</s3m:ms-{str(self.mcuid)}>\n"
         
         return(xmlstr)
 
@@ -794,7 +794,7 @@ class AttestationType(MetaCommon):
         att_str = ''
 
         # Create the datatype
-        att_str += '\n\n' + padding.rjust(indent) + ("<xs:complexType name='mc-" + self.mcuid + "' xml:lang='" + self.language + "'>\n")
+        att_str += '\n\n' + padding.rjust(indent) + (f"<xs:complexType name='mc-{self.mcuid}' xml:lang='{self.language}'>\n")
         att_str += padding.rjust(indent + 2) + ("<xs:annotation>\n")
         att_str += padding.rjust(indent + 2) + ("<xs:documentation>\n")
         att_str += padding.rjust(indent + 4) + (escape(self.docs) + "\n")
@@ -802,34 +802,34 @@ class AttestationType(MetaCommon):
         # Write the semantic links. There must be the same number of attributes
         # and links or none will be written.
         att_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
-        att_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
+        att_str += padding.rjust(indent + 2) + (f"<rdfs:Class rdf:about='mc-{self.mcuid}'>\n")
         att_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#AttestationType'/>\n")
         att_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
-        att_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
+        att_str += padding.rjust(indent + 2) + (f"<rdfs:label>{escape(self.label.strip())}</rdfs:label>\n")
         if len(self.pred_obj_list) != 0:
             for po in self.pred_obj_list:
-                att_str += padding.rjust(indent + 2) + ("<" + po.predicate.ns_abbrev.__str__() + ":" + po.predicate.class_name.strip() + " rdf:resource='" + quote(po.object_uri) + "'/>\n")
+                att_str += padding.rjust(indent + 2) + (f"<{po.predicate.ns_abbrev.__str__()} : {po.predicate.class_name.strip()} rdf:resource='{quote(po.object_uri)}'/>\n")
         att_str += padding.rjust(indent + 2) + ("</rdfs:Class>\n")
         att_str += padding.rjust(indent + 2) + ('</xs:appinfo>\n')
         att_str += padding.rjust(indent + 2) + ("</xs:annotation>\n")
         att_str += padding.rjust(indent + 2) + ("<xs:complexContent>\n")
         att_str += padding.rjust(indent + 4) + ("<xs:restriction base='s3m:AttestationType'>\n")
         att_str += padding.rjust(indent + 6) + ("<xs:sequence>\n")
-        att_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed=" + '"' + escape(self.label.strip()) + '"' + "/>\n")
+        att_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed='{escape(self.label.strip())}'/>\n")
 
         if self.view is not None:
-            att_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['view'][0]) + "' name='view' type='s3m:mc-" + str(self.view.mcuid) + "'/> \n")
+            att_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['view'][0])}' name='view' type='s3m:mc-{str(self.view.mcuid)}'/> \n")
 
         if self.proof is not None:
-            att_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['proof'][0]) + "' name='proof' type='s3m:mc-" + str(self.proof.mcuid) + "'/> \n")
+            att_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['proof'][0])}' name='proof' type='s3m:mc-{str(self.proof.mcuid)}'/> \n")
 
         if self.reason is not None:
-            att_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['reason'][0]) + "' name='reason' type='s3m:mc-" + str(self.reason.mcuid) + "'/> \n")
+            att_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['reason'][0])}' name='reason' type='s3m:mc-{str(self.reason.mcuid)}'/> \n")
 
         if self.committer is not None:
-            att_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['committer'][0]) + "' name='committer' type='s3m:mc-" + str(self.committer.mcuid) + "'/>\n")
+            att_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['committer'][0])}' name='committer' type='s3m:mc-{str(self.committer.mcuid)}'/>\n")
 
-        att_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['committed'][0]) + "' name='committed' type='xs:dateTime'/>\n")
+        att_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['committed'][0])}' name='committed' type='xs:dateTime'/>\n")
         att_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' default='true' name='pending' type='xs:boolean'/>\n")
         att_str += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         att_str += padding.rjust(indent + 6) + ("</xs:restriction>\n")
@@ -858,8 +858,8 @@ class AttestationType(MetaCommon):
         indent = 2
         padding = ('').rjust(indent)
         xmlstr = ''
-        xmlstr += padding + "<s3m:ms-" + self.mcuid + ">\n"
-        xmlstr += "<label>" + escape(self.label.strip()) + "</label>\n"
+        xmlstr += padding + f"<s3m:ms-{self.mcuid}>\n"
+        xmlstr += f"<label>{escape(self.label.strip())}</label>\n"
         if self.view is not None:
             xmlstr += padding + "<view>\n"
             xmlstr += padding + self.view.getXMLInstance(example)
@@ -877,9 +877,9 @@ class AttestationType(MetaCommon):
             xmlstr += padding + self.committer.getXMLInstance(example)
             xmlstr += padding + "</committer>\n"
         if self.committed is not None:
-            xmlstr += padding + "  <committed>" + self.committed.isoformat() + "</committed>\n"
-        xmlstr += padding + "  <pending>" + str(self.pending).lower() + "</pending>\n"
-        xmlstr += padding + "</s3m:ms-" + self.mcuid + ">\n"
+            xmlstr += padding + f"  <committed>{self.committed.isoformat()}</committed>\n"
+        xmlstr += padding + f"  <pending>{str(self.pending).lower()}</pending>\n"
+        xmlstr += padding + f"</s3m:ms-{self.mcuid}>\n"
 
         return(xmlstr)
 
@@ -1036,7 +1036,7 @@ class ParticipationType(MetaCommon):
         ptn_str = ''
 
         # Create the datatype
-        ptn_str += '\n\n' + padding.rjust(indent) + ("<xs:complexType name='mc-" + self.mcuid + "' xml:lang='" + self.language + "'> \n")
+        ptn_str += '\n\n' + padding.rjust(indent) + (f"<xs:complexType name='mc-{self.mcuid}' xml:lang='{self.language}'> \n")
         ptn_str += padding.rjust(indent + 2) + ("<xs:annotation>\n")
         ptn_str += padding.rjust(indent + 2) + ("<xs:documentation>\n")
         ptn_str += padding.rjust(indent + 4) + (escape(self.docs) + "\n")
@@ -1044,35 +1044,35 @@ class ParticipationType(MetaCommon):
         # Write the semantic links. There must be the same number of attributes
         # and links or none will be written.
         ptn_str += padding.rjust(indent + 2) + ('<xs:appinfo>\n')
-        ptn_str += padding.rjust(indent + 2) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "'>\n")
+        ptn_str += padding.rjust(indent + 2) + (f"<rdfs:Class rdf:about='mc-{self.mcuid}'>\n")
         ptn_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd#ParticipationType'/>\n")
         ptn_str += padding.rjust(indent + 2) + ("<rdfs:subClassOf rdf:resource='https://www.s3model.com/ns/s3m/s3model/RMC'/>\n")
-        ptn_str += padding.rjust(indent + 2) + ("<rdfs:label>" + escape(self.label.strip()) + "</rdfs:label>\n")
+        ptn_str += padding.rjust(indent + 2) + (f"<rdfs:label>{escape(self.label.strip())}</rdfs:label>\n")
         if len(self.pred_obj_list) > 0:  # are there additional predicate-object definitions?
             for po in self.pred_obj_list:
                 pred = po[0]
                 obj = po[1]
-                ptn_str += padding.rjust(indent + 8) + '<' + pred.strip() + ' rdf:resource="' + quote(obj.strip()) + '"/>\n'
+                ptn_str += padding.rjust(indent + 8) + f'<{pred.strip()} rdf:resource="{quote(obj.strip())}"/>\n'
         ptn_str += padding.rjust(indent + 2) + ("</rdfs:Class>\n")
         ptn_str += padding.rjust(indent + 2) + ('</xs:appinfo>\n')
         ptn_str += padding.rjust(indent + 2) + ("</xs:annotation>\n")
         ptn_str += padding.rjust(indent + 2) + ("<xs:complexContent>\n")
         ptn_str += padding.rjust(indent + 4) + ("<xs:restriction base='s3m:ParticipationType'>\n")
         ptn_str += padding.rjust(indent + 6) + ("<xs:sequence>\n")
-        ptn_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed=" + '"' + escape(self.label.strip()) + '"' + "/>\n")
+        ptn_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='label' type='xs:string' fixed='{escape(self.label.strip())}'/>\n")
     
         # Participation
         if self.performer is not None:
-            ptn_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['performer'][0]) + "' name='performer' type='s3m:mc-" + str(self.performer.mcuid) + "'/>\n")
+            ptn_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['performer'][0])}' name='performer' type='s3m:mc-{str(self.performer.mcuid)}'/>\n")
 
         if self.function is not None:
-            ptn_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['function'][0]) + "' name='function' type='s3m:mc-" + str(self.function.mcuid) + "'/>\n")
+            ptn_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['function'][0])}' name='function' type='s3m:mc-{str(self.function.mcuid)}'/>\n")
 
         if self.mode is not None:
-            ptn_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['mode'][0]) + "' name='mode' type='s3m:mc-" + str(self.mode.mcuid) + "'/> \n")
+            ptn_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['mode'][0])}' name='mode' type='s3m:mc-{str(self.mode.mcuid)}'/> \n")
 
-        ptn_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['start'][0]) + "' name='start' type='xs:dateTime'/>\n")
-        ptn_str += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['end'][0]) + "' name='end' type='xs:dateTime'/>\n")
+        ptn_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['start'][0])}' name='start' type='xs:dateTime'/>\n")
+        ptn_str += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['end'][0])}' name='end' type='xs:dateTime'/>\n")
 
         ptn_str += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         ptn_str += padding.rjust(indent + 6) + ("</xs:restriction>\n")
@@ -1102,25 +1102,25 @@ class ParticipationType(MetaCommon):
         padding = ('').rjust(indent)
 
         xmlstr = ''
-        xmlstr += "<s3m:ms-" + self.mcuid + ">\n"
-        xmlstr += padding + "  <label>" + escape(self.label.strip()) + "</label>\n"
+        xmlstr += f"<s3m:ms-{self.mcuid}>\n"
+        xmlstr += padding + f"  <label>{escape(self.label.strip())}</label>\n"
         
         if self.performer is not None:
             xmlstr += padding + "<performer>\n"
-            xmlstr += padding + "  <label>" + escape(self.performer.label) + "</label>\n"
+            xmlstr += padding + f"  <label>{escape(self.performer.label)}</label>\n"
             if self.performer.party_name is not None:
-                xmlstr += padding + "  <party-name>" + escape(self.performer.party_name) + "</party-name>\n"
+                xmlstr += padding + f"  <party-name>{escape(self.performer.party_name)}</party-name>\n"
             if self.performer.party_ref is not None:
                 xmlstr += padding + "  <party-ref>\n"
-                xmlstr += padding + '    <label>' + self.performer.party_ref.label + '</label>\n'
-                xmlstr += padding + '    <link>' + self.performer.party_ref.link + '</link>\n'
-                xmlstr += padding + '    <relation>' + self.performer.party_ref.relation + '</relation>\n'
-                xmlstr += padding + '    <relation-uri>' + self.performer.party_ref.relation_uri + '</relation-uri>\n'
+                xmlstr += padding + f'    <label>{self.performer.party_ref.label}</label>\n'
+                xmlstr += padding + f'    <link>{self.performer.party_ref.link}</link>\n'
+                xmlstr += padding + f'    <relation>{self.performer.party_ref.relation}</relation>\n'
+                xmlstr += padding + f'    <relation-uri>{self.performer.party_ref.relation_uri}</relation-uri>\n'
                 xmlstr += padding + "  </party-ref>\n"
         
             if self.performer.party_details is not None:
                 xmlstr += padding + "  <party-details>\n"
-                xmlstr += padding + "    <label>" + escape(self.performer.party_details.label.strip()) + "</label>\n"
+                xmlstr += padding + f"    <label>{escape(self.performer.party_details.label.strip())}</label>\n"
                 for adapter in self.performer.party_details.items:
                     xmlstr += padding + adapter.value.getXMLInstance(example)
     
@@ -1139,11 +1139,11 @@ class ParticipationType(MetaCommon):
             xmlstr += padding + "</mode>\n"
     
         if self.start is not None:
-            xmlstr += padding + "  <start>" + str(self.start) + "</start>\n"
+            xmlstr += padding + f"  <start>{str(self.start)}</start>\n"
         if self.end is not None:
-            xmlstr += padding + "  <end>" + str(self.end) + "</end>\n"
+            xmlstr += padding + f"  <end>{str(self.end)}</end>\n"
         
-        xmlstr += padding + "</s3m:ms-" + self.mcuid + ">\n"
+        xmlstr += padding + f"</s3m:ms-{self.mcuid}>\n"
         return(xmlstr)
 
     def getJSONInstance(self, example):

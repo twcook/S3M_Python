@@ -5,18 +5,20 @@ Introduction and Installation
 Purpose
 =======
 
-**S3MPython** is a Python implementation of the `S3Model <https://s3model.com>`_ specifications.
+**S3MPython** is a Python implementation of the `S3Model <https://datainsights.tech/S3Model/>`_ specifications.
 
 Target Audience
 ---------------
-This library provides the ability for `domain experts <https://s3model.com/specifications/docs/glossary.html#domain-expert>`_ from any field, with some programming
+This library provides the ability for *domain experts* from any field, with some programming
 ability to build S3Model data models.
 
 Programmers, data engineers and data scientists can also benefit from this library in the same ways as
-domain experts as long as they understand the `domain ontologies and vocabularies <https://s3model.com/specifications/docs/glossary.html#ontology>`_ to use for the semantic markup.
+domain experts as long as they understand the domain ontologies and vocabularies to use for the semantic markup.
 
 
-**For hands on experience** we recommend that you start with the `S3MPython Training Examples <https://github.com/twcook/S3M_Python_Training_examples>`_. The **tutorial** for these examples is located in the `S3Model User Guide <https://s3model.com/userguide/docs/index.html>`_ It is *highly* recommended that those new to S3Model read the User Guide in it's entirety before doing the tutorial.
+**For hands on experience** we recomend that you start with the `S3MPython Examples <http://datainsights.tech/S3MPython_examples/>`_.
+
+
 
 
 .. _install:
@@ -24,24 +26,17 @@ domain experts as long as they understand the `domain ontologies and vocabularie
 Installation
 ============
 
-You should install S3MPython into the `virtual environment <https://docs.python.org/3/tutorial/venv.html>`_ where you are developing your application.
+You should install S3MPython into the virtual environment where you are developing your application.
 
-
-.. code-block:: sh
-
-    pip install S3MPython
-
-
-
-The latest release candidate can be installed from the `Github <https://github.com/twcook/S3M_Python/>`_ project.
+The latest version can be installed from PyPi:
 
 .. code-block:: sh
 
-    pip install  <path/to/release/file>
+    pip install  S3MPython
 
-The *<path/to/release/file>* is found by going to the `Releases page <https://github.com/twcook/S3M_Python/releases>`_ under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.
+The *<path/to/release/file>* is found by going to the `Releases page <https://github.com/DataInsightsInc/S3MPython/releases>`_ under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.
 
-See the **Project Integration** section of the `documentation <https://s3model.com/S3MPython/docs/config.html>`_ for the next steps.
+See the **Project Integration** section of the `documentation <http://datainsights.tech/S3MPython/config.html>`_ for the next steps.
 
 
 Development
@@ -62,12 +57,7 @@ Anaconda is the **preferred environment** for a tool like S3MPython because it i
 
 .. code-block:: sh
 
-    mkdir S3MPythonTest
-
-
-.. code-block:: sh
-
-    cd S3MPythonTest
+    cd S3MPython
 
 - Create the environment
 
@@ -76,13 +66,24 @@ Anaconda is the **preferred environment** for a tool like S3MPython because it i
     conda env create -f S3MPython.yml
 
 
+.. _activate: Activate
+
+
+- Activate the environment according to the instructions shown by Anaconda in the terminal window.
+
+**Windows**
+
 .. code-block:: sh
 
-    source activate S3MPython
+    activate <path/to/directory>
+
+**or Linux/MacOSX**
 
 .. code-block:: sh
 
-    pip install S3MPython
+    source activate <path/to/directory>
+
+- install S3MPython
 
 Create a new branch for your changes.
 
@@ -98,7 +99,7 @@ Build and install your development branch into your S3MPython environment.
 
 These quick steps create a virtual environment in the subdirectory *S3MPython*.
 Once the environment is created, conda displays how to activate the environment.
-When activated, S3MPython is installed in the subdirectory along with the environment.
+When activated then S3MPython is installed in the subdirectory along with the environment.
 
 
 What are all the files for?

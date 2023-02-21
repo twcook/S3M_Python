@@ -1,7 +1,7 @@
 """
 Utility functions to support data generation etc.
 
-Copyright, 2009 - 2022, Timothy W. Cook
+Copyright 2018-2023, Timothy W. Cook 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,6 +15,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+import os
+import urllib 
+import configparser
+
 from random import randint, choice, uniform, randrange
 from datetime import datetime, date, time, timedelta
 from decimal import Decimal
@@ -26,24 +30,33 @@ def fetch_acs(link):
     Each access control tag must be on a separate line.
     A default file is included with S3MPython if none is specified in S3MPython.conf
     """
-    # TODO: Implement URL retrieval
 
     acslist = []
-    try:
-        with open(link, 'r') as f:
-            for line in f:
-                acslist.append(line)
-    except:
-        raise IOError("Could not get the access control list from " + str(link))
+    acsfile = None
+    if os.path.isfile(link):
+        acsfile = open(link, 'r')
+    elif acsfile is None and link.upper().startswith('HTTP'):
+        try:
+            acsfile = urllib.request.urlopen(link)
+        except urllib.error.URLError as e:
+            print(e.reason)
+            return(acslist)
+        
+
+    for line in acsfile:
+        acslist.append(line)
+        
+    acsfile.close()
 
     return(acslist)
 
 
-def reg_ns():
+def reg_ns(new_ns=None):
     """
-    Return an etree object with registered namespaces.
+    Return a dictionary to register namespaces in the data models.
+    The default namespaces are registered in the first, the if a dictionary is passed, it is added.
+    Then the function checks the configuration file for additional namespaces.
     """
-    #  TODO: Implement customizable list to add to the defaults.
     
     ns_dict = {}
     ns_dict['vc']="http://www.w3.org/2007/XMLSchema-versioning"
@@ -62,6 +75,15 @@ def reg_ns():
     ns_dict['sh']="http://www.w3.org/ns/shacl#"
     ns_dict['s3m']="https://www.s3model.com/ns/s3m/"
 
+    if new_ns:
+        ns_dict.update(new_ns)
+
+    config = configparser.ConfigParser()
+    config.read(os.path.join('conf', 'S3MPython.conf'))
+    if config.has_section('NAMESPACES'):
+        for ns in config.items('NAMESPACES'):
+            ns_dict.update({ns[0]:ns[1]})
+    
     return(ns_dict)
 
 def get_latlon():
