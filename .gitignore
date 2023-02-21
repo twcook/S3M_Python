@@ -105,3 +105,13 @@ venv.bak/
 
 # editors
 .vscode/
+
+# S3MPython project directories
+build/
+dist/
+s3mpython.egg-info/
+catalogs/
+dmlib/
+rdfdir/
+xmldir/
+conf/
