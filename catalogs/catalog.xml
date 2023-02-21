@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE catalog PUBLIC '-//OASIS//DTD XML Catalogs V1.1//EN' 'http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd'>
-<catalog xmlns='urn:oasis:names:tc:entity:xmlns:xml:catalog'>
-  <!-- S3Model 3.1.0 RM Schema -->  <uri name='https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd' uri='s3model_3_1_0.xsd'/>
-
-  <!-- S3Model DMs -->  <rewriteSystem systemIdStartString='https://www.s3model.com/dmlib/' rewritePrefix='C:\Users\timot\GitHub\backups\S3MPython\dmlib'/>
-</catalog>
-
