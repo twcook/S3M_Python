@@ -1,4 +1,0 @@
-Public
-Private
-Secret
-PII

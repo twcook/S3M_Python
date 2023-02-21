@@ -1,1 +1,0 @@
-# DataModel01 Example
