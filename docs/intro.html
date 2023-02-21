@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en-US" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction and Installation &mdash; Shareable, Structured, Semantic Model</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Integration" href="config.html" />
+    <link rel="prev" title="Welcome to S3MPython’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> S3MPython
+          
+
+          
+            
+            <img src="_static/SmallLogo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction and Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-audience">Target Audience</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development">Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cross-platform-on-anaconda">Cross-Platform on Anaconda</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-all-the-files-for">What are all the files for?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#files">Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directories">Directories</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Project Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LIS.html">Python Language Implementation Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">S3MPython</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction and Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-and-installation">
+<h1>Introduction and Installation<a class="headerlink" href="#introduction-and-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p><strong>S3MPython</strong> is a Python implementation of the <a class="reference external" href="https://datainsights.tech/S3Model/">S3Model</a> specifications.</p>
+<div class="section" id="target-audience">
+<h3>Target Audience<a class="headerlink" href="#target-audience" title="Permalink to this headline">¶</a></h3>
+<p>This library provides the ability for <em>domain experts</em> from any field, with some programming
+ability to build S3Model data models.</p>
+<p>Programmers, data engineers and data scientists can also benefit from this library in the same ways as
+domain experts as long as they understand the domain ontologies and vocabularies to use for the semantic markup.</p>
+<p><strong>For hands on experience</strong> we recomend that you start with the <a class="reference external" href="http://datainsights.tech/S3MPython_examples/">S3MPython Examples</a>.</p>
+</div>
+</div>
+<div class="section" id="installation">
+<span id="install"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>You should install S3MPython into the virtual environment where you are developing your application.</p>
+<p>The latest version can be installed from PyPi:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install  &lt;path/to/release/file&gt;
+</pre></div>
+</div>
+<p>The <em>&lt;path/to/release/file&gt;</em> is found by going to the <a class="reference external" href="https://github.com/DataInsightsInc/S3MPython/releases">Releases page</a> under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.</p>
+<p>See the <strong>Project Integration</strong> section of the <a class="reference external" href="http://datainsights.tech/S3MPython/config.html">documentation</a> for the next steps.</p>
+</div>
+<div class="section" id="development">
+<h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cross-platform-on-anaconda">
+<h3>Cross-Platform on Anaconda<a class="headerlink" href="#cross-platform-on-anaconda" title="Permalink to this headline">¶</a></h3>
+<p>Anaconda is the <strong>preferred environment</strong> for a tool like S3MPython because it integrates easily with systems for domain experts, data engineers, and data scientists.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.continuum.io/downloads">Download and install</a> Anaconda Python 3.7+ for your platform.</p></li>
+<li><p>More detailed Anaconda instructions are <a class="reference external" href="https://docs.continuum.io/anaconda/install/">here</a>  if you prefer.</p></li>
+<li><p>Open a terminal window and create a conda environment. On Windows it is best to open an <em>Anaconda Prompt</em> terminal from the Anaconda menu:</p></li>
+<li><p>Create and change to the directory</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> S3MPython
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create the environment</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda env create -f S3MPython.yml
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Activate the environment according to the instructions shown by Anaconda in the terminal window.</p></li>
+</ul>
+<p><strong>Windows</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>activate &lt;path/to/directory&gt;
+</pre></div>
+</div>
+<p><strong>or Linux/MacOSX</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate &lt;path/to/directory&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>install S3MPython</p></li>
+</ul>
+<p>Create a new branch for your changes.</p>
+<p>Build and install your development branch into your S3MPython environment.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 setup.py sdist bdist_wheel
+
+pip install e .
+</pre></div>
+</div>
+<p>These quick steps create a virtual environment in the subdirectory <em>S3MPython</em>.
+Once the environment is created, conda displays how to activate the environment.
+When activated then S3MPython is installed in the subdirectory along with the environment.</p>
+</div>
+</div>
+<div class="section" id="what-are-all-the-files-for">
+<h2>What are all the files for?<a class="headerlink" href="#what-are-all-the-files-for" title="Permalink to this headline">¶</a></h2>
+<p>Depending on how and where you installed S3MPython you will see a varying number of files and
+subdirectories. Many of them may be part of the Anaconda environment, so we do not cover those.</p>
+<p>Referenced from the <em>S3MPython</em> directory created at install time:</p>
+<div class="section" id="files">
+<h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>README.md</dt><dd><p>A brief explanation of the library’s purpose and links to background information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>S3MPython.conf</dt><dd><p>This file is the required configuration file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LICENSE</dt><dd><p>A copy of the copyright notice and license.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="directories">
+<h3>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>docs</dt><dd><p>S3MPython HTML documentation. Open the index.html file in a browser.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>s3model</dt><dd><p>Support files required for operation.</p>
+<ul>
+<li><p>s3model.owl - the core S3Model ontology.</p></li>
+<li><p>s3model_3_1_0.xsd - the reference model schema version 3.1.0</p></li>
+<li><p>s3model_3_1_0.rdf - the extracted semantics from the reference model schema version 3.1.0</p></li>
+<li><p>s3model_3_1_0.xsl - a stylesheet providing visualization in a browser of the reference model schema version 3.1.0</p></li>
+<li><p>dm-description.xsl - a stylesheet that provides for visualization in a browser of any S3Model data model. Just place it in the same directory with the dm-{cuid}.xsd file and open the schema in a browser.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>S3MPython</dt><dd><p>The library source code.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="config.html" class="btn btn-neutral float-right" title="Project Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to S3MPython’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2009 - 2019, Data Insights, Inc. https://datainsights.tech  
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
