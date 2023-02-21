@@ -1,1 +1,1 @@
-Contains the Python 3.7 library to implement the S3Model ontology and reference model.
+A Python library to implementing the S3Model ontology and reference model.
