@@ -929,29 +929,29 @@ class ReferenceRangeType(XdAnyType):
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
 
-        xmlstr += padding.rjust(indent + 2) + '<definition>' + self.definition.strip() + '</definition>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<definition>{self.definition.strip()}</definition>\n'
         xmlstr += padding.rjust(indent + 2) + '<interval>\n'
-        xmlstr += padding.rjust(indent + 4) + '<label>' + self.interval.label + '</label>\n'
+        xmlstr += padding.rjust(indent + 4) + f'<label>{self.interval.label}</label>\n'
         if self.interval.lower is not None:
-            xmlstr += padding.rjust(indent + 4) + '<lower>' + str(self.interval.lower).strip() + '</lower>\n'
+            xmlstr += padding.rjust(indent + 4) + f'<lower>{str(self.interval.lower).strip()}</lower>\n'
         if self.interval.upper is not None:
-            xmlstr += padding.rjust(indent + 4) + '<upper>' + str(self.interval.upper).strip() + '</upper>\n'
-        xmlstr += padding.rjust(indent + 4) + '<lower-included>' + li + '</lower-included>\n'
-        xmlstr += padding.rjust(indent + 4) + '<upper-included>' + ui + '</upper-included>\n'
-        xmlstr += padding.rjust(indent + 4) + '<lower-bounded>' + lb + '</lower-bounded>\n'
-        xmlstr += padding.rjust(indent + 4) + '<upper-bounded>' + ub + '</upper-bounded>\n'
+            xmlstr += padding.rjust(indent + 4) + f'<upper>{str(self.interval.upper).strip()}</upper>\n'
+        xmlstr += padding.rjust(indent + 4) + f'<lower-included>{li}</lower-included>\n'
+        xmlstr += padding.rjust(indent + 4) + f'<upper-included>{ui}</upper-included>\n'
+        xmlstr += padding.rjust(indent + 4) + f'<lower-bounded>{lb}</lower-bounded>\n'
+        xmlstr += padding.rjust(indent + 4) + f'<upper-bounded>{ub}</upper-bounded>\n'
         if self.interval.interval_units is not None:
             xmlstr += padding.rjust(indent + 4) + '<interval-units>\n'
-            xmlstr += padding.rjust(indent + 6) + '<units-name>' + self.interval.interval_units[0].strip() + '</units-name>\n'
-            xmlstr += padding.rjust(indent + 6) + '<units-uri>' + self.interval.interval_units[1].strip() + '</units-uri>\n'
+            xmlstr += padding.rjust(indent + 6) + f'<units-name>{self.interval.interval_units[0].strip()}</units-name>\n'
+            xmlstr += padding.rjust(indent + 6) + f'<units-uri>{self.interval.interval_units[1].strip()}</units-uri>\n'
             xmlstr += padding.rjust(indent + 4) + '</interval-units>\n'
         xmlstr += padding.rjust(indent + 2) + '</interval>\n'
 
-        xmlstr += padding.rjust(indent + 2) + '<is-normal>' + normal + '</is-normal>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<is-normal>{normal}</is-normal>\n'
 
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
 
         return(xmlstr)
@@ -1082,7 +1082,7 @@ class XdBooleanType(XdAnyType):
         xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
         xdstr += padding.rjust(indent + 12) + ("<xs:restriction base='xs:string'>\n")
         for n in range(len(trues)):
-            xdstr += padding.rjust(indent + 16) + ("<xs:enumeration value='" + trues[n].strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 16) + (f"<xs:enumeration value='{trues[n].strip()}'/>\n")
         xdstr += padding.rjust(indent + 12) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
         xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
@@ -1090,7 +1090,7 @@ class XdBooleanType(XdAnyType):
         xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
         xdstr += padding.rjust(indent + 12) + ("<xs:restriction base='xs:string'>\n")
         for n in range(len(falses)):
-            xdstr += padding.rjust(indent + 16) + ("<xs:enumeration value='" + falses[n].strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 16) + (f"<xs:enumeration value='{falses[n].strip()}'/>\n")
         xdstr += padding.rjust(indent + 12) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
         xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
@@ -1125,15 +1125,15 @@ class XdBooleanType(XdAnyType):
         xmlstr = super().getXMLInstance(example)
 
         if self.true_value is not None:
-            xmlstr += padding.rjust(indent + 2) + '<true-value>' + self.true_value + '</true-value>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<true-value>{self.true_value}</true-value>\n'
         elif self.false_value is not None:
-            xmlstr += padding.rjust(indent + 2) + '<false-value>' + self.false_value + '</false-value>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<false-value>{self.false_value}</false-value>\n'
         else:
             xmlstr += padding.rjust(indent + 2) + '<!-- ** Missing required instance data. ** -->\n'
 
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
 
         return(xmlstr)
@@ -1262,17 +1262,17 @@ class XdLinkType(XdAnyType):
         xdstr = super().getModel()
         # XdLinkType
         if not self.fixed:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['link'][0]) + "' name='link' type='xs:anyURI'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['link'][0])}' name='link' type='xs:anyURI'/>\n")
         else:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='link' type='xs:anyURI' fixed='" + escape(self.link.strip()) + "'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='link' type='xs:anyURI' fixed='{escape(self.link.strip())}'/>\n")
         if not self.relation:
             raise ValueError("You must add a relationship.")
         else:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='relation' type='xs:string' fixed='" + escape(self.relation.strip()) + "'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='relation' type='xs:string' fixed='{escape(self.relation.strip())}'/>\n")
         if not self.relation_uri:
             raise ValueError("You must add a URI for the relationship location.")
         else:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['relation_uri'][0]) + "' name='relation-uri' type='xs:anyURI' fixed='" + escape(self.relation_uri.strip()) + "'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['relation_uri'][0])}' name='relation-uri' type='xs:anyURI' fixed='{escape(self.relation_uri.strip())}'/>\n")
         xdstr += padding.rjust(indent + 6) + '</xs:sequence>\n'
         xdstr += padding.rjust(indent + 4) + '</xs:restriction>\n'
         xdstr += padding.rjust(indent + 2) + '</xs:complexContent>\n'
@@ -1295,13 +1295,13 @@ class XdLinkType(XdAnyType):
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
 
-        xmlstr += padding.rjust(indent + 2) + '<link>' + self.link + '</link>\n'
-        xmlstr += padding.rjust(indent + 2) + '<relation>' + self.relation + '</relation>\n'
-        xmlstr += padding.rjust(indent + 2) + '<relation-uri>' + self.relation_uri + '</relation-uri>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<link>{self.link}</link>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<relation>{self.relation}</relation>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<relation-uri>{self.relation_uri}</relation-uri>\n'
 
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
         return(xmlstr)
 
@@ -1494,53 +1494,53 @@ class XdStringType(XdAnyType):
         xdstr = super().getModel()
         # XdStringType
         if isinstance(self.regex, str):
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "' name='xdstring-value'>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}' name='xdstring-value'>\n")
             xdstr += padding.rjust(indent + 12) + ("<xs:simpleType>\n")
             xdstr += padding.rjust(indent + 14) + ("<xs:restriction base='xs:string'>\n")
-            xdstr += padding.rjust(indent + 16) + ("<xs:pattern value='" + self.regex.strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 16) + (f"<xs:pattern value='{self.regex.strip()}'/>\n")
             xdstr += padding.rjust(indent + 14) + ("</xs:restriction>\n")
             xdstr += padding.rjust(indent + 12) + ("</xs:simpleType>\n")
             xdstr += padding.rjust(indent + 10) + ("</xs:element>\n")
         if self.length is not None:
             if isinstance(self.length, int):
-                xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "' name='xdstring-value'>\n")
+                xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}' name='xdstring-value'>\n")
                 xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
                 xdstr += padding.rjust(indent + 12) + ("<xs:restriction base='xs:string'>\n")
-                xdstr += padding.rjust(indent + 14) + ("<xs:length value='" + str(self.length).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 14) + (f"<xs:length value='{str(self.length).strip()}'/>\n")
                 xdstr += padding.rjust(indent + 12) + ("</xs:restriction>\n")
                 xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
                 xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
             elif (self.length, tuple) and len(self.length) == 2:
-                xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "' name='xdstring-value'>\n")
+                xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}' name='xdstring-value'>\n")
                 xdstr += padding.rjust(indent + 12) + ("<xs:simpleType>\n")
                 xdstr += padding.rjust(indent + 14) + ("<xs:restriction base='xs:string'>\n")
                 if isinstance(self.length[0], int):
-                    xdstr += padding.rjust(indent + 16) + ("<xs:minLength value='" + str(self.length[0]).strip() + "'/>\n")
+                    xdstr += padding.rjust(indent + 16) + (f"<xs:minLength value='{str(self.length[0]).strip()}'/>\n")
                 if isinstance(self.length[1], int):
-                    xdstr += padding.rjust(indent + 16) + ("<xs:maxLength value='" + str(self.length[1]).strip() + "'/>\n")
+                    xdstr += padding.rjust(indent + 16) + (f"<xs:maxLength value='{str(self.length[1]).strip()}'/>\n")
                 xdstr += padding.rjust(indent + 14) + ("</xs:restriction>\n")
                 xdstr += padding.rjust(indent + 12) + ("</xs:simpleType>\n")
                 xdstr += padding.rjust(indent + 10) + ("</xs:element>\n")
         elif self.default is not None and self.regex is None and self.length is None:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "' name='xdstring-value' type='xs:string' default='" + escape(self.default) + "'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}' name='xdstring-value' type='xs:string' default='" + escape(self.default) + "'/>\n")
         elif self.default is None and self.regex is None and self.length is None and len(self.enums) == 0:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "' name='xdstring-value' type='xs:string'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}' name='xdstring-value' type='xs:string'/>\n")
         else:
             pass
 
         # Process Enumerations
         if len(self.enums) > 0:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "' name='xdstring-value'>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}' name='xdstring-value'>\n")
             xdstr += padding.rjust(indent + 12) + ("<xs:simpleType>\n")
             xdstr += padding.rjust(indent + 14) + ("<xs:restriction base='xs:string'>\n")
             for n in range(len(self.enums)):
-                xdstr += padding.rjust(indent + 16) + ("<xs:enumeration value='" + escape(self.enums[n][0].strip()) + "'>\n")
+                xdstr += padding.rjust(indent + 16) + (f"<xs:enumeration value='{escape(self.enums[n][0].strip())}'>\n")
                 xdstr += padding.rjust(indent + 16) + ("<xs:annotation>\n")
                 xdstr += padding.rjust(indent + 18) + ("<xs:appinfo>\n")
-                xdstr += padding.rjust(indent + 20) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "/xdstring-value/" + quote(self.enums[n][0].strip()) + "'>\n")
-                xdstr += padding.rjust(indent + 20) + ("  <rdfs:subPropertyOf rdf:resource='mc-" + self.mcuid + "'/>\n")
-                xdstr += padding.rjust(indent + 20) + ("  <rdfs:label>" + self.enums[n][0].strip() + "</rdfs:label>\n")
-                xdstr += padding.rjust(indent + 20) + ("  <rdfs:isDefinedBy>" + self.enums[n][1].strip() + "</rdfs:isDefinedBy>\n")
+                xdstr += padding.rjust(indent + 20) + (f"<rdfs:Class rdf:about='mc-{self.mcuid}/xdstring-value/{quote(self.enums[n][0].strip())}'>\n")
+                xdstr += padding.rjust(indent + 20) + (f"  <rdfs:subPropertyOf rdf:resource='mc-{self.mcuid}'/>\n")
+                xdstr += padding.rjust(indent + 20) + (f"  <rdfs:label>{self.enums[n][0].strip()}</rdfs:label>\n")
+                xdstr += padding.rjust(indent + 20) + (f"  <rdfs:isDefinedBy>{self.enums[n][1].strip()}</rdfs:isDefinedBy>\n")
                 xdstr += padding.rjust(indent + 20) + ("</rdfs:Class>\n")
                 xdstr += padding.rjust(indent + 18) + ("</xs:appinfo>\n")
                 xdstr += padding.rjust(indent + 16) + ("</xs:annotation>\n")
@@ -1550,7 +1550,7 @@ class XdStringType(XdAnyType):
             xdstr += padding.rjust(indent + 10) + ("</xs:element>\n")
 
         if self.language is not None and isinstance(self.language, str):
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['language'][0]) + "' name='xdstring-language' type='xs:language' default='" + self.language + "'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['language'][0])}' name='xdstring-language' type='xs:language' default='{self.language}'/>\n")
 
         xdstr += padding.rjust(indent + 6) + '</xs:sequence>\n'
         xdstr += padding.rjust(indent + 4) + '</xs:restriction>\n'
@@ -1592,13 +1592,13 @@ class XdStringType(XdAnyType):
         xmlstr = super().getXMLInstance(example)
         if self.value == None:
             self.value = 'A Default String'
-        xmlstr += padding.rjust(indent + 2) + '<xdstring-value>' + self.value + '</xdstring-value>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<xdstring-value>{self.value}</xdstring-value>\n'
         if self.language is not None:
-            xmlstr += padding.rjust(indent + 2) + '<xdstring-language>' + self.language + '</xdstring-language>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<xdstring-language>{self.language}</xdstring-language>\n'
 
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
 
         return(xmlstr)
@@ -1910,15 +1910,15 @@ class XdFileType(XdAnyType):
         padding = ('').rjust(indent)
 
         xdstr = super().getModel()
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['size'][0]) + '" name="size" type="xs:int"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['encoding'][0]) + '" name="encoding" type="xs:string"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['language'][0]) + '" name="xdfile-language" type="xs:language"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['formalism'][0]) + '" name="formalism" type="xs:string"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['media_type'][0]) + '" name="media-type" type="xs:string"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['compression_type'][0]) + '" name="compression-type" type="xs:string"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['hash_result'][0]) + '" name="hash-result" type="xs:string"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['hash_function'][0]) + '" name="hash-function" type="xs:string"/>\n'
-        xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="' + str(self.cardinality['alt_txt'][0]) + '" name="alt-txt" type="xs:string"/>\n'
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['size'][0])}' name='size' type='xs:int'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['encoding'][0])}' name='encoding' type='xs:string'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['language'][0])}' name='xdfile-language' type='xs:language'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['formalism'][0])}' name='formalism' type='xs:string'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['media_type'][0])}' name='media-type' type='xs:string'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['compression_type'][0])}' name='compression-type' type='xs:string'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['hash_result'][0])}' name='hash-result' type='xs:string'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['hash_function'][0])}' name='hash-function' type='xs:string'/>\n"
+        xdstr += padding.rjust(indent + 8) + f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['alt_txt'][0])}' name='alt-txt' type='xs:string'/>\n"
 
         if self.content_type == 'uri':
             xdstr += padding.rjust(indent + 8) + '<xs:element maxOccurs="1" minOccurs="1" name="uri" type="xs:anyURI"/>\n'
@@ -1957,31 +1957,31 @@ class XdFileType(XdAnyType):
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
         if self.size is not None:
-            xmlstr += padding.rjust(indent + 2) + '<size>' + str(self.size) + '</size>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<size>{str(self.size)}</size>\n'
         if self.encoding is not None:
-            xmlstr += padding.rjust(indent + 2) + '<encoding>' + self.encoding.strip() + '</encoding>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<encoding>{self.encoding.strip()}</encoding>\n'
         if self.language is not None:
-            xmlstr += padding.rjust(indent + 2) + '<xdfile-language>' + self.language.strip() + '</xdfile-language>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<xdfile-language>{self.language.strip()}</xdfile-language>\n'
         if self.formalism is not None:
-            xmlstr += padding.rjust(indent + 2) + '<formalism>' + self.formalism.strip() + '</formalism>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<formalism>{self.formalism.strip()}</formalism>\n'
         if self.media_type is not None:
-            xmlstr += padding.rjust(indent + 2) + '<media-type>' + self.media_type.strip() + '</media-type>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<media-type>{self.media_type.strip()}</media-type>\n'
         if self.compression_type is not None:
-            xmlstr += padding.rjust(indent + 2) + '<compression-type>' + self.compression_type.strip() + '</compression-type>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<compression-type>{self.compression_type.strip()}</compression-type>\n'
         if self.hash_result is not None:
-            xmlstr += padding.rjust(indent + 2) + '<hash-result>' + self.hash_result.strip() + '</hash-result>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<hash-result>{self.hash_result.strip()}</hash-result>\n'
         if self.hash_function is not None:
-            xmlstr += padding.rjust(indent + 2) + '<hash-function>' + self.hash_function.strip() + '</hash-function>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<hash-function>{self.hash_function.strip()}</hash-function>\n'
         if self.alt_txt is not None:
-            xmlstr += padding.rjust(indent + 2) + '<alt-txt>' + self.alt_txt.strip() + '</alt-txt>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<alt-txt>{self.alt_txt.strip()}</alt-txt>\n'
         if self.uri is not None:
-            xmlstr += padding.rjust(indent + 2) + '<uri>' + self.uri.strip() + '</uri>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<uri>{self.uri.strip()}</uri>\n'
         elif self.media_content is not None:
-            xmlstr += padding.rjust(indent + 2) + '<media-content>' + str(self.media_content) + '</media-content>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<media-content>{str(self.media_content)}</media-content>\n'
 
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
         return(xmlstr)
 
@@ -2058,11 +2058,11 @@ class XdOrderedType(XdAnyType):
         # XdOrdered
         if len(self.referenceranges) > 0:
             for rr in self.referenceranges:
-                xdstr += padding.rjust(indent + 6) + "<xs:element maxOccurs='1' minOccurs='1' ref='s3m:ms-" + rr.mcuid + "'/> \n"
+                xdstr += padding.rjust(indent + 6) + f"<xs:element maxOccurs='1' minOccurs='1' ref='s3m:ms-{rr.mcuid}'/> \n"
         if self.normal_status is not None:
-            xdstr += padding.rjust(indent + 6) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['normal_status'][0]) + "' name='normal-status' type='xs:string' fixed='" + escape(self.normal_status.strip()) + "'/> \n")
+            xdstr += padding.rjust(indent + 6) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['normal_status'][0])}' name='normal-status' type='xs:string' fixed='{escape(self.normal_status.strip())}'/> \n")
         else:
-            xdstr += padding.rjust(indent + 6) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['normal_status'][0]) + "' name='normal-status' type='xs:string'/> \n")
+            xdstr += padding.rjust(indent + 6) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['normal_status'][0])}' name='normal-status' type='xs:string'/> \n")
 
         return(xdstr)
 
@@ -2081,7 +2081,7 @@ class XdOrderedType(XdAnyType):
             for rr in self.referenceranges:
                 xmlstr += rr.getXMLInstance()
         if self.normal_status is not None:
-            xmlstr += padding.rjust(indent) + '<normal-status>' + self.normal_status + '</normal-status>\n'
+            xmlstr += padding.rjust(indent) + f'<normal-status>{self.normal_status}</normal-status>\n'
 
         return(xmlstr)
 
@@ -2226,7 +2226,7 @@ class XdOrdinalType(XdOrderedType):
         xdstr += padding.rjust(indent + 12) + ("<xs:simpleType>\n")
         xdstr += padding.rjust(indent + 12) + ("<xs:restriction base='xs:decimal'>\n")
         for k in ords:
-            xdstr += padding.rjust(indent + 14) + ("<xs:enumeration value='" + str(k).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 14) + (f"<xs:enumeration value='{str(k).strip()}'/>\n")
         xdstr += padding.rjust(indent + 12) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 12) + ("</xs:simpleType>\n")
         xdstr += padding.rjust(indent + 10) + ("</xs:element>\n")
@@ -2235,11 +2235,11 @@ class XdOrdinalType(XdOrderedType):
         xdstr += padding.rjust(indent + 12) + ("<xs:simpleType>\n")
         xdstr += padding.rjust(indent + 14) + ("<xs:restriction base='xs:string'>\n")
         for k in ords:
-            xdstr += padding.rjust(indent + 16) + ("<xs:enumeration value='" + str(self.choices[k][0]).strip() + "'>\n")
+            xdstr += padding.rjust(indent + 16) + (f"<xs:enumeration value='{str(self.choices[k][0]).strip()}'>\n")
             xdstr += padding.rjust(indent + 16) + ("<xs:annotation>\n")
             xdstr += padding.rjust(indent + 18) + ("<xs:appinfo>\n")
-            xdstr += padding.rjust(indent + 18) + ("<rdfs:Class rdf:about='mc-" + self.mcuid + "/symbol/" + quote(str(self.choices[k][0]).strip()) + "'>\n")
-            xdstr += padding.rjust(indent + 20) + ("<rdfs:isDefinedBy rdf:resource='" + quote(str(self.choices[k][1]).strip()) + "'/>\n")
+            xdstr += padding.rjust(indent + 18) + (f"<rdfs:Class rdf:about='mc-{self.mcuid}/symbol/{quote(str(self.choices[k][0]).strip())}'>\n")
+            xdstr += padding.rjust(indent + 20) + (f"<rdfs:isDefinedBy rdf:resource='{quote(str(self.choices[k][1]).strip())}'/>\n")
             xdstr += padding.rjust(indent + 18) + ("</rdfs:Class>\n")
             xdstr += padding.rjust(indent + 18) + ("</xs:appinfo>\n")
             xdstr += padding.rjust(indent + 16) + ("</xs:annotation>\n")
@@ -2273,11 +2273,11 @@ class XdOrdinalType(XdOrderedType):
         indent = 2
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
-        xmlstr += padding.rjust(indent + 2) + '<ordinal>' + str(self.ordinal) + '</ordinal>\n'
-        xmlstr += padding.rjust(indent + 2) + '<symbol>' + self.symbol + '</symbol>\n'
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<ordinal>{str(self.ordinal)}</ordinal>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<symbol>{self.symbol}</symbol>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
         return(xmlstr)
 
@@ -2372,8 +2372,8 @@ class XdQuantifiedType(XdOrderedType):
         xdstr = super().getModel()
         # XdQuantified
         xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='0' name='magnitude-status' type='s3m:MagnitudeStatus'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['error'][0]) + "' name='error'  type='xs:int' default='0'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['accuracy'][0]) + "' name='accuracy' type='xs:int' default='0'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['error'][0])}' name='error'  type='xs:int' default='0'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['accuracy'][0])}' name='accuracy' type='xs:int' default='0'/>\n")
 
         return(xdstr)
 
@@ -2388,9 +2388,9 @@ class XdQuantifiedType(XdOrderedType):
         if self.cardinality['magnitude_status'][0] > 0:
             xmlstr += padding.rjust(indent) + '<magnitude-status>=</magnitude-status>\n'
         if self.error is not None:
-            xmlstr += padding.rjust(indent) + '<error>' + str(self.error).strip() + '</error>\n'
+            xmlstr += padding.rjust(indent) + f'<error>{str(self.error).strip()}</error>\n'
         if self.accuracy is not None:
-            xmlstr += padding.rjust(indent) + '<accuracy>' + str(self.accuracy).strip() + '</accuracy>\n'
+            xmlstr += padding.rjust(indent) + f'<accuracy>{str(self.accuracy).strip()}</accuracy>\n'
 
         return(xmlstr)
 
@@ -2582,26 +2582,26 @@ class XdCountType(XdQuantifiedType):
         xdstr = super().getModel()
         # XdCount
         if not self._mag_constrained:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "'  name='xdcount-value' type='xs:int'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}'  name='xdcount-value' type='xs:int'/>\n")
         else:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "'  name='xdcount-value'>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}'  name='xdcount-value'>\n")
             xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
             xdstr += padding.rjust(indent + 10) + ("<xs:restriction base='xs:int'>\n")
             if self.min_inclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:minInclusive value='" + str(self.min_inclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:minInclusive value='{str(self.min_inclusive).strip()}'/>\n")
             if self.max_inclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:maxInclusive value='" + str(self.max_inclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:maxInclusive value='{str(self.max_inclusive).strip()}'/>\n")
             if self.min_exclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:minExclusive value='" + str(self.min_exclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:minExclusive value='{str(self.min_exclusive).strip()}'/>\n")
             if self.max_exclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:maxExclusive value='" + str(self.max_exclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:maxExclusive value='{str(self.max_exclusive).strip()}'/>\n")
             if (self.total_digits is not None and self.total_digits > 0):
-                xdstr += padding.rjust(indent + 12) + ("<xs:totalDigits value='" + str(self.total_digits).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:totalDigits value='{str(self.total_digits).strip()}'/>\n")
             xdstr += padding.rjust(indent + 10) + ("</xs:restriction>\n")
             xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
             xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
 
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='xdcount-units' type='s3m:mc-" + str(self.units.mcuid) + "'/> \n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='xdcount-units' type='s3m:mc-{str(self.units.mcuid)}'/> \n")
         xdstr += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         xdstr += padding.rjust(indent + 6) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 4) + ("</xs:complexContent>\n")
@@ -2649,14 +2649,14 @@ class XdCountType(XdQuantifiedType):
         indent = 4
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
-        xmlstr += padding.rjust(indent) + '<xdcount-value>' + str(self.value).strip() + '</xdcount-value>\n'
+        xmlstr += padding.rjust(indent) + f'<xdcount-value>{str(self.value).strip()}</xdcount-value>\n'
         xmlstr += padding.rjust(indent) + '<xdcount-units>\n'
-        xmlstr += padding.rjust(indent + 2) + '<label>' + self.units.label + '</label>\n'
-        xmlstr += padding.rjust(indent + 2) + '<xdstring-value>' + self.units.value + '</xdstring-value>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<label>{self.units.label}</label>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<xdstring-value>{self.units.value}</xdstring-value>\n'
         xmlstr += padding.rjust(indent) + '</xdcount-units>\n'
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
         return(xmlstr)
 
@@ -2866,28 +2866,28 @@ class XdQuantityType(XdQuantifiedType):
         xdstr = super().getModel()
         # XdQuantity
         if not self._mag_constrained:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "'  name='xdquantity-value' type='xs:decimal'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}'  name='xdquantity-value' type='xs:decimal'/>\n")
         else:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "'  name='xdquantity-value'>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}'  name='xdquantity-value'>\n")
             xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
             xdstr += padding.rjust(indent + 10) + ("<xs:restriction base='xs:decimal'>\n")
             if self.min_inclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:minInclusive value='" + str(self.min_inclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:minInclusive value='{str(self.min_inclusive).strip()}'/>\n")
             if self.max_inclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:maxInclusive value='" + str(self.max_inclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:maxInclusive value='{str(self.max_inclusive).strip()}'/>\n")
             if self.min_exclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:minExclusive value='" + str(self.min_exclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:minExclusive value='{str(self.min_exclusive).strip()}'/>\n")
             if self.max_exclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:maxExclusive value='" + str(self.max_exclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:maxExclusive value='{str(self.max_exclusive).strip()}'/>\n")
             if (self.total_digits is not None and self.total_digits > 0):
-                xdstr += padding.rjust(indent + 12) + ("<xs:totalDigits value='" + str(self.total_digits).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:totalDigits value='{str(self.total_digits).strip()}'/>\n")
             if (self.fraction_digits is not None and self.fraction_digits >= 0):
-                xdstr += padding.rjust(indent + 12) + ("<xs:fractionDigits value='" + str(self.fraction_digits).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:fractionDigits value='{str(self.fraction_digits).strip()}'/>\n")
             xdstr += padding.rjust(indent + 10) + ("</xs:restriction>\n")
             xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
             xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
 
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='xdquantity-units' type='s3m:mc-" + str(self.units.mcuid) + "'/> \n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='1' name='xdquantity-units' type='s3m:mc-{str(self.units.mcuid)}'/> \n")
         xdstr += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         xdstr += padding.rjust(indent + 6) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 4) + ("</xs:complexContent>\n")
@@ -2936,14 +2936,14 @@ class XdQuantityType(XdQuantifiedType):
         indent = 4
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
-        xmlstr += padding.rjust(indent) + '<xdquantity-value>' + str(self.value).strip() + '</xdquantity-value>\n'
+        xmlstr += padding.rjust(indent) + f'<xdquantity-value>{str(self.value).strip()}</xdquantity-value>\n'
         xmlstr += padding.rjust(indent) + '<xdquantity-units>\n'
-        xmlstr += padding.rjust(indent + 2) + '<label>' + self.units.label + '</label>\n'
-        xmlstr += padding.rjust(indent + 2) + '<xdstring-value>' + self.units.value + '</xdstring-value>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<label>{self.units.label}</label>\n'
+        xmlstr += padding.rjust(indent + 2) + f'<xdstring-value>{self.units.value}</xdstring-value>\n'
         xmlstr += padding.rjust(indent) + '</xdquantity-units>\n'
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
 
         return(xmlstr)
@@ -3111,25 +3111,25 @@ class XdFloatType(XdQuantifiedType):
         xdstr = super().getModel()
         # XdFloat
         if not self._mag_constrained:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "'  name='xdfloat-value' type='xs:float'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}'  name='xdfloat-value' type='xs:float'/>\n")
         else:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['value'][0]) + "'  name='xdfloat-value'>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['value'][0])}'  name='xdfloat-value'>\n")
             xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
             xdstr += padding.rjust(indent + 10) + ("<xs:restriction base='xs:float'>\n")
             if self.min_inclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:minInclusive value='" + str(self.min_inclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:minInclusive value='{str(self.min_inclusive).strip()}'/>\n")
             if self.max_inclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:maxInclusive value='" + str(self.max_inclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:maxInclusive value='{str(self.max_inclusive).strip()}'/>\n")
             if self.min_exclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:minExclusive value='" + str(self.min_exclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:minExclusive value='{str(self.min_exclusive).strip()}'/>\n")
             if self.max_exclusive is not None:
-                xdstr += padding.rjust(indent + 12) + ("<xs:maxExclusive value='" + str(self.max_exclusive).strip() + "'/>\n")
+                xdstr += padding.rjust(indent + 12) + (f"<xs:maxExclusive value='{str(self.max_exclusive).strip()}'/>\n")
             xdstr += padding.rjust(indent + 10) + ("</xs:restriction>\n")
             xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
             xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
 
         if self.units:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['units'][0]) + "' name='xdfloat-units' type='s3m:mc-" + str(self.units.mcuid) + "'/> \n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['units'][0])}' name='xdfloat-units' type='s3m:mc-{str(self.units.mcuid)}'/> \n")
         xdstr += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         xdstr += padding.rjust(indent + 6) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 4) + ("</xs:complexContent>\n")
@@ -3167,15 +3167,15 @@ class XdFloatType(XdQuantifiedType):
         indent = 4
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
-        xmlstr += padding.rjust(indent) + '<xdfloat-value>' + str(self.value).strip() + '</xdfloat-value>\n'
+        xmlstr += padding.rjust(indent) + f'<xdfloat-value>{str(self.value).strip()}</xdfloat-value>\n'
         if self.units:
             xmlstr += padding.rjust(indent) + '<xdfloat-units>\n'
-            xmlstr += padding.rjust(indent + 2) + '<label>' + self.units.label + '</label>\n'
-            xmlstr += padding.rjust(indent + 2) + '<xdstring-value>' + self.units.value + '</xdstring-value>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<label>{self.units.label}</label>\n'
+            xmlstr += padding.rjust(indent + 2) + f'<xdstring-value>{self.units.value}</xdstring-value>\n'
             xmlstr += padding.rjust(indent) + '</xdfloat-units>\n'
-        xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.mcuid + '>\n'
+        xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.mcuid}>\n'
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
 
         return(xmlstr)
@@ -3511,41 +3511,41 @@ class XdRatioType(XdQuantifiedType):
 
 
         xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='1' name='ratio-type' type='s3m:TypeOfRatio'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['numerator'][0]) + "' name='numerator'>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['numerator'][0])}' name='numerator'>\n")
         xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
         xdstr += padding.rjust(indent + 10) + ("<xs:restriction base='xs:float'>\n")
         if self.num_min_inclusive:
-            xdstr += padding.rjust(indent + 12) + ("<xs:minInclusive value='" + str(self.num_min_inclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:minInclusive value='{str(self.num_min_inclusive).strip()}'/>\n")
         if self.num_min_exclusive:
-            xdstr += padding.rjust(indent + 12) + ("<xs:minExclusive value='" + str(self.num_min_exclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:minExclusive value='{str(self.num_min_exclusive).strip()}'/>\n")
         if self.num_max_inclusive:
-            xdstr += padding.rjust(indent + 12) + ("<xs:maxInclusive value='" + str(self.num_max_inclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:maxInclusive value='{str(self.num_max_inclusive).strip()}'/>\n")
         if self.num_max_exclusive:
-            xdstr += padding.rjust(indent + 12) + ("<xs:maxExclusive value='" + str(self.num_max_exclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:maxExclusive value='{str(self.num_max_exclusive).strip()}'/>\n")
         xdstr += padding.rjust(indent + 10) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
         xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
 
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['denominator'][0]) + "' name='denominator'>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['denominator'][0])}' name='denominator'>\n")
         xdstr += padding.rjust(indent + 10) + ("<xs:simpleType>\n")
         xdstr += padding.rjust(indent + 10) + ("<xs:restriction base='xs:float'>\n")
         if self.den_min_inclusive is not None:
-            xdstr += padding.rjust(indent + 12) + ("<xs:minInclusive value='" + str(self.den_min_inclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:minInclusive value='{str(self.den_min_inclusive).strip()}'/>\n")
         if self.den_min_exclusive is not None:
-            xdstr += padding.rjust(indent + 12) + ("<xs:minExclusive value='" + str(self.den_min_exclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:minExclusive value='{str(self.den_min_exclusive).strip()}'/>\n")
         if self.den_max_inclusive is not None:
-            xdstr += padding.rjust(indent + 12) + ("<xs:maxInclusive value='" + str(self.den_max_inclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:maxInclusive value='{str(self.den_max_inclusive).strip()}'/>\n")
         if self.den_max_exclusive is not None:
-            xdstr += padding.rjust(indent + 12) + ("<xs:maxExclusive value='" + str(self.den_max_exclusive).strip() + "'/>\n")
+            xdstr += padding.rjust(indent + 12) + (f"<xs:maxExclusive value='{str(self.den_max_exclusive).strip()}'/>\n")
         xdstr += padding.rjust(indent + 10) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 10) + ("</xs:simpleType>\n")
         xdstr += padding.rjust(indent + 8) + ("</xs:element>\n")
 
         if self.numerator_units:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['numerator_units'][0]) + "' name='numerator-units' type='s3m:mc-" + self.numerator_units.mcuid + "'/> \n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['numerator_units'][0])}' name='numerator-units' type='s3m:mc-{self.numerator_units.mcuid}'/> \n")
 
         if self.denominator_units:
-            xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='1' minOccurs='" + str(self.cardinality['denominator_units'][0]) + "' name='denominator-units' type='s3m:mc-" + self.denominator_units.mcuid + "'/>\n")
+            xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='1' minOccurs='{str(self.cardinality['denominator_units'][0])}' name='denominator-units' type='s3m:mc-{self.denominator_units.mcuid}'/>\n")
         xdstr += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         xdstr += padding.rjust(indent + 6) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 4) + ("</xs:complexContent>\n")
@@ -3592,29 +3592,29 @@ class XdRatioType(XdQuantifiedType):
         padding = ('').rjust(indent)
         xmlstr = super().getXMLInstance(example)
 
-        xmlstr += padding + "<ratio-type>" + self.ratio_type + "</ratio-type>\n"
-        xmlstr += padding + "<numerator>" + str(self.numerator) + "</numerator>\n"
-        xmlstr += padding + "<denominator>" + str(self.denominator) + "</denominator>\n"
-        xmlstr += padding + "<xdratio-value>" + str(self.ratio) + "</xdratio-value>\n"
+        xmlstr += padding + f"<ratio-type>{self.ratio_type}</ratio-type>\n"
+        xmlstr += padding + f"<numerator>{str(self.numerator)}</numerator>\n"
+        xmlstr += padding + f"<denominator>{str(self.denominator)}</denominator>\n"
+        xmlstr += padding + f"<xdratio-value>{str(self.ratio)}</xdratio-value>\n"
         if self.numerator_units is not None:
             xmlstr += padding + "<numerator-units>\n"
-            xmlstr += padding + "  <label>" + escape(self.numerator_units.label) + "</label>\n"
-            xmlstr += padding + "  <xdstring-value>" + self.numerator_units.value + "</xdstring-value>\n"
+            xmlstr += padding + f"  <label>{escape(self.numerator_units.label)}</label>\n"
+            xmlstr += padding + f"  <xdstring-value>{self.numerator_units.value}</xdstring-value>\n"
             xmlstr += padding + "</numerator-units>\n"
         if self.denominator_units is not None:
             xmlstr += padding + "<denominator-units>\n"
-            xmlstr += padding + "  <label>" + escape(self.denominator_units.label) + "</label>\n"
-            xmlstr += padding + "  <xdstring-value>" + self.denominator_units.value + "</xdstring-value>\n"
+            xmlstr += padding + f"  <label>{escape(self.denominator_units.label)}</label>\n"
+            xmlstr += padding + f"  <xdstring-value>{self.denominator_units.value}</xdstring-value>\n"
             xmlstr += padding + "</denominator-units>\n"
         if self.ratio_units is not None:
             xmlstr += padding + "<xdratio-units>\n"
-            xmlstr += padding + "  <label>" + escape(self.ratio_units.label) + "</label>\n"
-            xmlstr += padding + "  <xdstring-value>" + self.ratio_units.value + "</xdstring-value>\n"
+            xmlstr += padding + f"  <label>{escape(self.ratio_units.label)}</label>\n"
+            xmlstr += padding + f"  <xdstring-value>{self.ratio_units.value}</xdstring-value>\n"
             xmlstr += padding + "</xdratio-units>\n"
 
-        xmlstr += padding + "</s3m:ms-" + str(self.mcuid) + ">\n"
+        xmlstr += padding + f"</s3m:ms-{str(self.mcuid)}>\n"
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
         return(xmlstr)
 
@@ -3867,15 +3867,15 @@ class XdTemporalType(XdOrderedType):
 
         # XdTemporal - every element must be included as either allowed or not allowed.
 
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['date'][1]) + "' minOccurs='" + str(self.cardinality['date'][0]) + "' name='xdtemporal-date' type='xs:date'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['time'][1]) + "' minOccurs='" + str(self.cardinality['time'][0]) + "' name='xdtemporal-time' type='xs:time'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['datetime'][1]) + "' minOccurs='" + str(self.cardinality['datetime'][0]) + "' name='xdtemporal-datetime' type='xs:dateTime'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['day'][1]) + "' minOccurs='" + str(self.cardinality['day'][0]) + "' name='xdtemporal-day' type='xs:gDay'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['month'][1]) + "' minOccurs='" + str(self.cardinality['month'][0]) + "' name='xdtemporal-month' type='xs:gMonth'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['year'][1]) + "' minOccurs='" + str(self.cardinality['year'][0]) + "' name='xdtemporal-year' type='xs:gYear'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['year_month'][1]) + "' minOccurs='" + str(self.cardinality['year_month'][0]) + "' name='xdtemporal-year-month' type='xs:gYearMonth'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['month_day'][1]) + "' minOccurs='" + str(self.cardinality['month_day'][0]) + "' name='xdtemporal-month-day' type='xs:gMonthDay'/>\n")
-        xdstr += padding.rjust(indent + 8) + ("<xs:element maxOccurs='" + str(self.cardinality['duration'][1]) + "' minOccurs='" + str(self.cardinality['duration'][0]) + "' name='xdtemporal-duration' type='xs:duration'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['date'][1])}' minOccurs='{str(self.cardinality['date'][0])}' name='xdtemporal-date' type='xs:date'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['time'][1])}' minOccurs='{str(self.cardinality['time'][0])}' name='xdtemporal-time' type='xs:time'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['datetime'][1])}' minOccurs='{str(self.cardinality['datetime'][0])}' name='xdtemporal-datetime' type='xs:dateTime'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['day'][1])}' minOccurs='{str(self.cardinality['day'][0])}' name='xdtemporal-day' type='xs:gDay'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['month'][1])}' minOccurs='{str(self.cardinality['month'][0])}' name='xdtemporal-month' type='xs:gMonth'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['year'][1])}' minOccurs='{str(self.cardinality['year'][0])}' name='xdtemporal-year' type='xs:gYear'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['year_month'][1])}' minOccurs='{str(self.cardinality['year_month'][0])}' name='xdtemporal-year-month' type='xs:gYearMonth'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['month_day'][1])}' minOccurs='{str(self.cardinality['month_day'][0])}' name='xdtemporal-month-day' type='xs:gMonthDay'/>\n")
+        xdstr += padding.rjust(indent + 8) + (f"<xs:element maxOccurs='{str(self.cardinality['duration'][1])}' minOccurs='{str(self.cardinality['duration'][0])}' name='xdtemporal-duration' type='xs:duration'/>\n")
         xdstr += padding.rjust(indent + 8) + ("</xs:sequence>\n")
         xdstr += padding.rjust(indent + 6) + ("</xs:restriction>\n")
         xdstr += padding.rjust(indent + 4) + ("</xs:complexContent>\n")
@@ -3911,25 +3911,25 @@ class XdTemporalType(XdOrderedType):
         xmlstr = super().getXMLInstance(example)
 
         if self.cardinality['date'][1] == 1 and self.date is not None:
-            xmlstr += padding + """  <xdtemporal-date>""" + datetime.strftime(self.date, '%Y-%m-%d') + """</xdtemporal-date>\n"""
+            xmlstr += padding + f"  <xdtemporal-date>{datetime.strftime(self.date, '%Y-%m-%d')}</xdtemporal-date>\n"
         if self.cardinality['time'][1] == 1 and self.time is not None:
-            xmlstr += padding + """  <xdtemporal-time>""" + datetime.strftime(self.time, '%H:%M:%S') + """</xdtemporal-time>\n"""
+            xmlstr += padding + f"  <xdtemporal-time>{datetime.strftime(self.time, '%H:%M:%S')}</xdtemporal-time>\n"
         if self.cardinality['datetime'][1] == 1 and self.datetime is not None:
-            xmlstr += padding + """  <xdtemporal-datetime>""" + datetime.strftime(self.datetime, '%Y-%m-%dT%H:%M:%S') + """</xdtemporal-datetime>\n"""
+            xmlstr += padding + f"  <xdtemporal-datetime>{datetime.strftime(self.datetime, '%Y-%m-%dT%H:%M:%S')}</xdtemporal-datetime>\n"
         if self.cardinality['day'][1] == 1 and self.day is not None:
-            xmlstr += padding + """  <xdtemporal-day>---""" + str(self.day) + """</xdtemporal-day>\n"""
+            xmlstr += padding + f"  <xdtemporal-day>---{str(self.day)}</xdtemporal-day>\n"
         if self.cardinality['month'][1] == 1 and self.month is not None:
-            xmlstr += padding + """  <xdtemporal-month>--""" + str(self.month) + """</xdtemporal-month>\n"""
+            xmlstr += padding + f"  <xdtemporal-month>--{str(self.month)}</xdtemporal-month>\n"
         if self.cardinality['year'][1] == 1 and self.year is not None:
-            xmlstr += padding + """  <xdtemporal-year>""" + str(self.year) + """</xdtemporal-year>\n"""
+            xmlstr += padding + f"  <xdtemporal-year>{str(self.year)}</xdtemporal-year>\n"
         if self.cardinality['year_month'][1] == 1 and self.year_month is not None:
-            xmlstr += padding + """  <xdtemporal-year-month>""" + str(self.year_month[0]) + '-' + str(self.year_month[1]) + """</xdtemporal-year-month>\n"""
+            xmlstr += padding + f"  <xdtemporal-year-month>{str(self.year_month[0])}-{str(self.year_month[1])}</xdtemporal-year-month>\n"
         if self.cardinality['month_day'][1] == 1 and self.month_day is not None:
-            xmlstr += padding + """  <xdtemporal-month-day>--""" + str(self.month_day[0]) + '-' + str(self.month_day[1]) + """</xdtemporal-month-day>\n"""
+            xmlstr += padding + f"  <xdtemporal-month-day>--{str(self.month_day[0])}-{str(self.month_day[1])}</xdtemporal-month-day>\n"
         if self.cardinality['duration'][1] == 1 and self.duration is not None:
-            xmlstr += padding + """  <xdtemporal-duration>""" + 'P' + ''.join(map(str, self.duration)) + 'D' + """</xdtemporal-duration>\n"""
-        xmlstr += padding + """</s3m:ms-""" + str(self.mcuid) + """>\n"""
+            xmlstr += padding + f"  <xdtemporal-duration>P{''.join(map(str, self.duration))}D</xdtemporal-duration>\n"
+        xmlstr += padding + f"</s3m:ms-{str(self.mcuid)}>\n"
         if self.adapter:
-            xmlstr += padding.rjust(indent) + '</s3m:ms-' + self.acuid + '>\n'
+            xmlstr += padding.rjust(indent) + f'</s3m:ms-{self.acuid}>\n'
 
         return(xmlstr)
