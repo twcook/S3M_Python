@@ -3,7 +3,7 @@ Welcome to S3MPython's documentation!
 =====================================
 
 
-*Copyright 2009 - 2019 Data Insights, Inc. - All Rights Reserved.*
+*Copyright 2009 - 2023 Timothy W. Cook - All Rights Reserved.*
 
 .. toctree::
    :maxdepth: 3

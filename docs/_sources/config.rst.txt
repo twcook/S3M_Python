@@ -168,5 +168,5 @@ This completes your S3MPython configuration.
 
 You can use the library to create S3Model models.
 
-For a hands-on experience, we recommend you start with the `S3MPython Examples <http://s3model.com/S3MPython_examples/>`_.
+For hands on experience we recomend that you start with the `S3MPython Examples <http://s3model.com/S3MPython_examples/>`_.
 

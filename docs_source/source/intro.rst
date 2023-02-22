@@ -63,7 +63,7 @@ Anaconda is the **preferred environment** for a tool like S3MPython because it i
 
 .. code-block:: sh
 
-    conda env create -f S3MPython.yml
+    conda create -n S3MPython -f dev_requirements.txt
 
 
 .. _activate: Activate
@@ -75,7 +75,7 @@ Anaconda is the **preferred environment** for a tool like S3MPython because it i
 
 .. code-block:: sh
 
-    activate <path/to/directory>
+    conda activate S3MPython
 
 **or Linux/MacOSX**
 
