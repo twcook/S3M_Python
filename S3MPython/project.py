@@ -32,7 +32,7 @@ def init(prjpath=None):
 
     print("\n\n  S3MPython initialization is complete.\n\n")
 
-    exit()
+    configure()
 
 def configure():
     """

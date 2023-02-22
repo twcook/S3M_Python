@@ -30,13 +30,13 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='S3MPython',
     version=VERSION,
-    description='Python implementation of the S3Model https://datainsights.tech/S3Model/ specifications version: ' + RMVERSION,
+    description='Python implementation of the S3Model https://S3Model.com/ specifications version: ' + RMVERSION,
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Timothy W. Cook',
-    author_email='timothywayne.cook@gmail.com',
+    author_email='s3modeldata@gmail.com',
     url='https://s3model.com',
-    download_url='https://github.com/twcook/S3MPython/archive/' + VERSION + '.tar.gz',
+    download_url='https://github.com/twcook/S3M_Python/archive/' + VERSION + '.tar.gz',
     keywords=['context rdf xml machine learning data-centric semantic interoperability semantics agi'],
     tests_require=['pytest', ],
     setup_requires=['pytest-runner', ],
@@ -77,8 +77,8 @@ setup(
                    'Topic :: Scientific/Engineering :: Information Analysis',
                  ],
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/DataInsightsInc/S3MPython/issues',
-        'Training': 'https://DataInsights.tech/training',
-        'Source': 'https://github.com/DataInsightsInc/S3MPython/',
+        'Bug Reports': 'https://github.com/twcook/S3M_Python/issues',
+        'Training': 'https://S3Model.com/training',
+        'Source': 'https://github.com/twcook/S3M_Python/',
     },
 )

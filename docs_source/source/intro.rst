@@ -5,7 +5,7 @@ Introduction and Installation
 Purpose
 =======
 
-**S3MPython** is a Python implementation of the `S3Model <https://datainsights.tech/S3Model/>`_ specifications.
+**S3MPython** is a Python implementation of the `S3Model <https://s3model.com/S3Model/>`_ specifications.
 
 Target Audience
 ---------------
@@ -16,7 +16,7 @@ Programmers, data engineers and data scientists can also benefit from this libra
 domain experts as long as they understand the domain ontologies and vocabularies to use for the semantic markup.
 
 
-**For hands on experience** we recomend that you start with the `S3MPython Examples <http://datainsights.tech/S3MPython_examples/>`_.
+**For hands on experience** we recomend that you start with the `S3MPython Examples <http://s3model.com/S3MPython_examples/>`_.
 
 
 
@@ -34,9 +34,9 @@ The latest version can be installed from PyPi:
 
     pip install  S3MPython
 
-The *<path/to/release/file>* is found by going to the `Releases page <https://github.com/DataInsightsInc/S3MPython/releases>`_ under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.
+The *<path/to/release/file>* is found by going to the `Releases page <https://github.com/twcook/S3M_Python/releases>`_ under the Release you want (usually the latest) go to the Source code link, right click on it and copy the link location.
 
-See the **Project Integration** section of the `documentation <http://datainsights.tech/S3MPython/config.html>`_ for the next steps.
+See the **Project Integration** section of the `documentation <http://s3model.com/S3MPython/config.html>`_ for the next steps.
 
 
 Development
