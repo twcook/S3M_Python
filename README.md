@@ -1,8 +1,5 @@
 # S3MPython
 
-[![Build Status](https://travis-ci.com/DataInsightsInc/S3MPython.svg?branch=master)](https://travis-ci.com/s3model/S3MPython)
-
-
 S3MPython is a Python library for creating S3Model data models.
 
 

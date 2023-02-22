@@ -1,7 +1,7 @@
 Tutorials
 =========
 
-See the Data Insights, Inc. `Training <https://datainsights.tech/training>`_ page.
+See the Data Insights, Inc. `Training <https://s3model.com/training>`_ page.
 
 Examples
 --------

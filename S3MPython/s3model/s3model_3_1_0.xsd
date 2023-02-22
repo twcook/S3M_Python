@@ -11,8 +11,8 @@
       The S3Model RM consists of the core datatypes and structures for domain concept models, called Data Models (DMs). 
       The DMs are composed of Model Components (MCs) that are expressed as constraints on the RM components. 
       For the core semantics see the accompanying file s3model.owl. The documentation for the component models are resolvable by replacing
-      the URL fragment "https://www.s3model.com/docs/" with "https://datainsights.tech/S3Model/rm/"
-      Further documentation and implementation instructions can be found at (or via links from) http://www.datainsights.tech/S3Model 
+      the URL fragment "https://www.s3model.com/docs/" with "https://s3model.com/S3Model/rm/"
+      Further documentation and implementation instructions can be found at (or via links from) http://www.s3model.com/S3Model 
    </xs:documentation>
     <xs:appinfo>
       <rdf:Description rdf:about="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd">
