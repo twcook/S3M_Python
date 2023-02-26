@@ -162,7 +162,8 @@ def xsdstub(model):
     <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-      xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:s3m="https://www.s3model.com/ns/s3m/"
+      xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" 
+      xmlns:s3m="https://www.s3model.com/ns/s3m/"
       targetNamespace="https://www.s3model.com/ns/s3m/">
       <xs:include schemaLocation="https://www.s3model.com/ns/s3m/s3model_3_1_0.xsd"/>
 

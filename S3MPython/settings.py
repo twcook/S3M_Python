@@ -19,7 +19,11 @@ import os
 import configparser
 
 config = configparser.ConfigParser()
-config.read(os.path.join('conf', 'S3MPython.conf'))
+if os.path.isfile(os.path.join('./conf', 'S3MPython.conf')):
+    config.read(os.path.join('conf', 'S3MPython.conf'))
+else:
+    print('\n\nConfiguration file not found at: ' + os.path.join('conf', 'S3MPython.conf'),'\n\n')
+    exit()
 
 VERSION = config['SYSTEM']['version']
 RMVERSION = config['SYSTEM']['rmversion']
